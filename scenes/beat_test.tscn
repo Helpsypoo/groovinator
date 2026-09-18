@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene format=3 uid="uid://c3h6l3h0r6xo4"]
 
-[ext_resource type="Script" path="res://scenes/beat_test.gd" id="1_script"]
-[ext_resource type="Script" path="res://core/song_clock.gd" id="2_clock"]
+[ext_resource type="Script" uid="uid://dbusjriyouom2" path="res://scenes/beat_test.gd" id="1_script"]
+[ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
 [ext_resource type="Resource" path="res://songs/disco.tres" id="3_song"]
 
-[node name="BeatTest" type="Control"]
+[node name="BeatTest" type="Control" unique_id=459559189]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,11 +14,11 @@ grow_vertical = 2
 script = ExtResource("1_script")
 song = ExtResource("3_song")
 
-[node name="SongClock" type="Node" parent="."]
+[node name="SongClock" type="Node" parent="." unique_id=753153340]
 unique_name_in_owner = true
 script = ExtResource("2_clock")
 
-[node name="Center" type="CenterContainer" parent="."]
+[node name="Center" type="CenterContainer" parent="." unique_id=1960298608]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,56 +26,56 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Center"]
+[node name="VBox" type="VBoxContainer" parent="Center" unique_id=550167069]
 custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="TitleLabel" type="Label" parent="Center/VBox"]
+[node name="TitleLabel" type="Label" parent="Center/VBox" unique_id=1110004390]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Song"
 horizontal_alignment = 1
 
-[node name="Light" type="ColorRect" parent="Center/VBox"]
+[node name="Light" type="ColorRect" parent="Center/VBox" unique_id=11815003]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
 color = Color(0.41, 0.41, 0.41, 1)
 
-[node name="JudgmentLabel" type="Label" parent="Center/VBox"]
+[node name="JudgmentLabel" type="Label" parent="Center/VBox" unique_id=852156795]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 48
 text = "Press Space on the beat"
 horizontal_alignment = 1
 
-[node name="StatsLabel" type="Label" parent="Center/VBox"]
+[node name="StatsLabel" type="Label" parent="Center/VBox" unique_id=480075964]
 unique_name_in_owner = true
 layout_mode = 2
 horizontal_alignment = 1
 
-[node name="ClockLabel" type="Label" parent="Center/VBox"]
+[node name="ClockLabel" type="Label" parent="Center/VBox" unique_id=2035328736]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 
-[node name="Separator" type="HSeparator" parent="Center/VBox"]
+[node name="Separator" type="HSeparator" parent="Center/VBox" unique_id=1817607368]
 layout_mode = 2
 
-[node name="Grid" type="GridContainer" parent="Center/VBox"]
+[node name="Grid" type="GridContainer" parent="Center/VBox" unique_id=703798399]
 layout_mode = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 8
 columns = 3
 
-[node name="AvLabel" type="Label" parent="Center/VBox/Grid"]
+[node name="AvLabel" type="Label" parent="Center/VBox/Grid" unique_id=209540487]
 layout_mode = 2
 text = "A/V offset (delays the light)"
 
-[node name="AvSlider" type="HSlider" parent="Center/VBox/Grid"]
+[node name="AvSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=260726249]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -85,17 +85,17 @@ min_value = -300.0
 max_value = 500.0
 step = 5.0
 
-[node name="AvValue" type="Label" parent="Center/VBox/Grid"]
+[node name="AvValue" type="Label" parent="Center/VBox/Grid" unique_id=2026350891]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="InputLabel" type="Label" parent="Center/VBox/Grid"]
+[node name="InputLabel" type="Label" parent="Center/VBox/Grid" unique_id=84256575]
 layout_mode = 2
 text = "Display + input lag (judging only)"
 
-[node name="InputSlider" type="HSlider" parent="Center/VBox/Grid"]
+[node name="InputSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=793250805]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -104,22 +104,22 @@ focus_mode = 0
 max_value = 200.0
 step = 5.0
 
-[node name="InputValue" type="Label" parent="Center/VBox/Grid"]
+[node name="InputValue" type="Label" parent="Center/VBox/Grid" unique_id=801692389]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="Authoring" type="HBoxContainer" parent="Center/VBox"]
+[node name="Authoring" type="HBoxContainer" parent="Center/VBox" unique_id=2045505143]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="BpmLabel" type="Label" parent="Center/VBox/Authoring"]
+[node name="BpmLabel" type="Label" parent="Center/VBox/Authoring" unique_id=869965511]
 layout_mode = 2
 text = "BPM"
 
-[node name="BpmSpin" type="SpinBox" parent="Center/VBox/Authoring"]
+[node name="BpmSpin" type="SpinBox" parent="Center/VBox/Authoring" unique_id=841259998]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 30.0
@@ -127,29 +127,29 @@ max_value = 300.0
 step = 0.01
 value = 120.0
 
-[node name="FirstBeatLabel" type="Label" parent="Center/VBox/Authoring"]
+[node name="FirstBeatLabel" type="Label" parent="Center/VBox/Authoring" unique_id=1814910171]
 layout_mode = 2
 text = "First beat (s)"
 
-[node name="FirstBeatSpin" type="SpinBox" parent="Center/VBox/Authoring"]
+[node name="FirstBeatSpin" type="SpinBox" parent="Center/VBox/Authoring" unique_id=735413997]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = -5.0
 max_value = 30.0
 step = 0.005
 
-[node name="Buttons" type="HBoxContainer" parent="Center/VBox"]
+[node name="Buttons" type="HBoxContainer" parent="Center/VBox" unique_id=1396253003]
 layout_mode = 2
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="StartButton" type="Button" parent="Center/VBox/Buttons"]
+[node name="StartButton" type="Button" parent="Center/VBox/Buttons" unique_id=1790615873]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
 text = "Start"
 
-[node name="ResetStatsButton" type="Button" parent="Center/VBox/Buttons"]
+[node name="ResetStatsButton" type="Button" parent="Center/VBox/Buttons" unique_id=320669657]
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0

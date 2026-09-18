@@ -10,7 +10,7 @@ const TIERS: Array[Dictionary] = [
 	{"name": "Okay", "window": 0.120},
 ]
 # The light is green inside this tier's window, yellow inside the last tier's, red outside.
-const GREEN_TIER := 2
+const GREEN_TIER := 0
 
 @export var song: SongData
 
@@ -72,8 +72,6 @@ func _process(_delta: float) -> void:
 	var error := absf(_error_to_nearest_beat(_clock.get_song_time() - av_offset))
 	if error <= TIERS[GREEN_TIER].window:
 		_light.color = Color.GREEN
-	elif error <= TIERS[-1].window:
-		_light.color = Color.YELLOW
 	else:
 		_light.color = Color.RED
 
