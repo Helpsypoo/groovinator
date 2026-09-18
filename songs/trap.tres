@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="SongData" format=3 uid="uid://b0doqidt6gntj"]
+
+[ext_resource type="Script" uid="uid://ipo7nfyi4rub" path="res://songs/song_data.gd" id="1_script"]
+[ext_resource type="AudioStream" uid="uid://bwyx2564atlb1" path="res://Tracks/atlasaudio-trap-beat-590006.mp3" id="2_stream"]
+
+[resource]
+script = ExtResource("1_script")
+title = "Trap Beat"
+stream = ExtResource("2_stream")
+bpm = 100.0

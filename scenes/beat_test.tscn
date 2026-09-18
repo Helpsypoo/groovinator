@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dbusjriyouom2" path="res://scenes/beat_test.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
-[ext_resource type="Resource" path="res://songs/disco.tres" id="3_song"]
+[ext_resource type="Script" path="res://scenes/note_lane.gd" id="3_lane"]
 
 [node name="BeatTest" type="Control" unique_id=459559189]
 layout_mode = 3
@@ -12,7 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
-song = ExtResource("3_song")
 
 [node name="SongClock" type="Node" parent="." unique_id=753153340]
 unique_name_in_owner = true
@@ -31,18 +30,17 @@ custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="TitleLabel" type="Label" parent="Center/VBox" unique_id=1110004390]
+[node name="SongSelect" type="OptionButton" parent="Center/VBox" unique_id=1092755371]
 unique_name_in_owner = true
-layout_mode = 2
-text = "Song"
-horizontal_alignment = 1
-
-[node name="Light" type="ColorRect" parent="Center/VBox" unique_id=11815003]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(160, 160)
 layout_mode = 2
 size_flags_horizontal = 4
-color = Color(0.41, 0.41, 0.41, 1)
+focus_mode = 0
+
+[node name="NoteLane" type="Control" parent="Center/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(720, 120)
+layout_mode = 2
+script = ExtResource("3_lane")
 
 [node name="JudgmentLabel" type="Label" parent="Center/VBox" unique_id=852156795]
 unique_name_in_owner = true
@@ -73,7 +71,7 @@ columns = 3
 
 [node name="AvLabel" type="Label" parent="Center/VBox/Grid" unique_id=209540487]
 layout_mode = 2
-text = "A/V offset (delays the light)"
+text = "A/V offset (delays the visuals)"
 
 [node name="AvSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=260726249]
 unique_name_in_owner = true
@@ -93,7 +91,7 @@ horizontal_alignment = 2
 
 [node name="InputLabel" type="Label" parent="Center/VBox/Grid" unique_id=84256575]
 layout_mode = 2
-text = "Display + input lag (judging only)"
+text = "Input lag (judging only, tune by ear)"
 
 [node name="InputSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=793250805]
 unique_name_in_owner = true
@@ -136,7 +134,7 @@ unique_name_in_owner = true
 layout_mode = 2
 min_value = -5.0
 max_value = 30.0
-step = 0.005
+step = 0.001
 
 [node name="Buttons" type="HBoxContainer" parent="Center/VBox" unique_id=1396253003]
 layout_mode = 2
