@@ -21,11 +21,11 @@ var song: SongData
 
 # Seconds visuals are held back so they are seen when the matching audio is heard.
 # Negative draws them ahead instead. Covers (unreported audio latency - display lag).
-var av_offset: float = 0.0
+var av_offset: float = 10.0
 # Display lag + input lag, in seconds. Added to av_offset when judging a press, so the
 # total is (audio latency + input lag). Shown to the player as just "input lag": it is
 # tuned by ear against the music, and naming the display would invite tuning it by eye.
-var input_offset: float = 0.0
+var input_offset: float = 100.0
 
 var _songs: Array[SongData] = []
 var _errors: Array[float] = []

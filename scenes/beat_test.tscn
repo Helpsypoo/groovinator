@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
 [ext_resource type="Script" uid="uid://bpbcsrmc8g4xs" path="res://scenes/note_lane.gd" id="3_lane"]
 [ext_resource type="PackedScene" path="res://scenes/note.tscn" id="4_note"]
-[ext_resource type="Script" path="res://scenes/dancer.gd" id="5_dancer"]
+[ext_resource type="Script" uid="uid://cd5vvpvx3j6ql" path="res://scenes/dancer.gd" id="5_dancer"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -40,15 +40,15 @@ point_count = 2
 shading_mode = 0
 albedo_color = Color(0.35, 0.3, 0.5, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
-shading_mode = 0
-albedo_color = Color(0.41, 0.41, 0.41, 1)
-
 [sub_resource type="TorusMesh" id="TorusMesh_marker"]
 inner_radius = 0.42
 outer_radius = 0.56
 rings = 48
 ring_segments = 16
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
+shading_mode = 0
+albedo_color = Color(0.41, 0.41, 0.41, 1)
 
 [node name="BeatTest" type="Node3D" unique_id=459559189]
 script = ExtResource("1_script")
@@ -57,37 +57,36 @@ script = ExtResource("1_script")
 unique_name_in_owner = true
 script = ExtResource("2_clock")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=215221343]
 environment = SubResource("Environment_stage")
 
-[node name="Sun" type="DirectionalLight3D" parent="."]
-rotation_degrees = Vector3(-55, -30, 0)
+[node name="Sun" type="DirectionalLight3D" parent="." unique_id=1246846742]
+transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.81915206, 0.5, -0.7094065, 0.49673176, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Camera" type="Camera3D" parent="."]
-position = Vector3(0, 2.5, 10)
-rotation_degrees = Vector3(-6, 0, 0)
+[node name="Camera" type="Camera3D" parent="." unique_id=790678043]
+transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.104528464, 0, -0.104528464, 0.9945219, 0, 2.5, 10)
 fov = 50.0
 
-[node name="Floor" type="MeshInstance3D" parent="."]
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1504573806]
 mesh = SubResource("PlaneMesh_floor")
 
-[node name="Dancer" type="Node3D" parent="."]
+[node name="Dancer" type="Node3D" parent="." unique_id=1369274278]
 unique_name_in_owner = true
 script = ExtResource("5_dancer")
 
-[node name="Body" type="MeshInstance3D" parent="Dancer"]
-position = Vector3(0, 0.75, 0)
+[node name="Body" type="MeshInstance3D" parent="Dancer" unique_id=1553446044]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("BoxMesh_dancer")
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
 unique_name_in_owner = true
-position = Vector3(0, 0.4, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4)
 curve = SubResource("Curve3D_lane")
 script = ExtResource("3_lane")
 note_scene = ExtResource("4_note")
 
-[node name="Rail" type="CSGPolygon3D" parent="NoteLane"]
+[node name="Rail" type="CSGPolygon3D" parent="NoteLane" unique_id=1467947181]
 cast_shadow = 0
 polygon = PackedVector2Array(-0.03, -0.03, -0.03, 0.03, 0.03, 0.03, 0.03, -0.03)
 mode = 2
@@ -96,24 +95,26 @@ path_interval_type = 0
 path_interval = 0.25
 path_simplify_angle = 0.0
 path_rotation = 2
+path_rotation_accurate = false
 path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
-[node name="HitMarker" type="PathFollow3D" parent="NoteLane"]
+[node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.0001342, 0, 0)
 progress = 9.0
 loop = false
 
-[node name="Ring" type="MeshInstance3D" parent="NoteLane/HitMarker"]
-rotation_degrees = Vector3(90, 0, 0)
+[node name="Ring" type="MeshInstance3D" parent="NoteLane/HitMarker" unique_id=868466612]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("TorusMesh_marker")
 surface_material_override/0 = SubResource("StandardMaterial3D_marker")
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="." unique_id=69065235]
 
-[node name="Margin" type="MarginContainer" parent="UI"]
+[node name="Margin" type="MarginContainer" parent="UI" unique_id=1477963082]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -136,20 +137,20 @@ theme_override_font_sizes/font_size = 40
 text = "Press Play"
 horizontal_alignment = 1
 
-[node name="Transport" type="HBoxContainer" parent="UI/Margin"]
+[node name="Transport" type="HBoxContainer" parent="UI/Margin" unique_id=1453067791]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/separation = 16
 
-[node name="PlayPauseButton" type="Button" parent="UI/Margin/Transport"]
+[node name="PlayPauseButton" type="Button" parent="UI/Margin/Transport" unique_id=1130679403]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
 focus_mode = 0
 text = "Play"
 
-[node name="RestartButton" type="Button" parent="UI/Margin/Transport"]
+[node name="RestartButton" type="Button" parent="UI/Margin/Transport" unique_id=1946873682]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
@@ -157,7 +158,7 @@ focus_mode = 0
 disabled = true
 text = "Restart"
 
-[node name="Tray" type="FoldableContainer" parent="UI/Margin"]
+[node name="Tray" type="FoldableContainer" parent="UI/Margin" unique_id=1576842648]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -165,16 +166,17 @@ focus_mode = 0
 folded = true
 title = "Song & calibration"
 
-[node name="VBox" type="VBoxContainer" parent="UI/Margin/Tray"]
+[node name="VBox" type="VBoxContainer" parent="UI/Margin/Tray" unique_id=237419338]
+visible = false
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="SongRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
+[node name="SongRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox" unique_id=1222682540]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="SongLabel" type="Label" parent="UI/Margin/Tray/VBox/SongRow"]
+[node name="SongLabel" type="Label" parent="UI/Margin/Tray/VBox/SongRow" unique_id=586385795]
 layout_mode = 2
 text = "Song"
 
@@ -187,7 +189,7 @@ focus_mode = 0
 [node name="Separator" type="HSeparator" parent="UI/Margin/Tray/VBox" unique_id=1817607368]
 layout_mode = 2
 
-[node name="AvRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
+[node name="AvRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox" unique_id=250681689]
 layout_mode = 2
 
 [node name="AvLabel" type="Label" parent="UI/Margin/Tray/VBox/AvRow" unique_id=209540487]
@@ -204,11 +206,12 @@ horizontal_alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 focus_mode = 0
-min_value = -300.0
+min_value = -200.0
 max_value = 500.0
 step = 5.0
+value = 10.0
 
-[node name="InputRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
+[node name="InputRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox" unique_id=1084157148]
 layout_mode = 2
 
 [node name="InputLabel" type="Label" parent="UI/Margin/Tray/VBox/InputRow" unique_id=84256575]
@@ -227,6 +230,7 @@ layout_mode = 2
 focus_mode = 0
 max_value = 200.0
 step = 5.0
+value = 100.0
 
 [node name="StatsLabel" type="Label" parent="UI/Margin/Tray/VBox" unique_id=480075964]
 unique_name_in_owner = true
@@ -239,7 +243,7 @@ size_flags_horizontal = 0
 focus_mode = 0
 text = "Reset stats"
 
-[node name="Separator2" type="HSeparator" parent="UI/Margin/Tray/VBox"]
+[node name="Separator2" type="HSeparator" parent="UI/Margin/Tray/VBox" unique_id=804231669]
 layout_mode = 2
 
 [node name="ClockLabel" type="Label" parent="UI/Margin/Tray/VBox" unique_id=2035328736]
