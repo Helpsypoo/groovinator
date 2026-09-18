@@ -20,9 +20,13 @@ signal finished
 ## real time. Keeps song time strictly increasing while slewing.
 @export var max_slew: float = 0.05
 @export var drift_correction_enabled: bool = true
+## Repeat the song forever. Song time wraps back to zero at the end of each pass.
+@export var loop: bool = true
 
 var song: SongData
+## True from start() until the song stops or finishes, including while paused.
 var is_playing: bool = false
+var is_paused: bool = false
 
 # Debug readouts.
 var raw_error: float = 0.0
@@ -38,6 +42,12 @@ var _player: AudioStreamPlayer
 var _anchor_usec: int = 0
 var _last_playback_position: float = 0.0
 var _stalled_time: float = 0.0
+# True from start() until the audio position is first seen moving.
+var _awaiting_audio: bool = false
+# Length of one pass of the song in seconds, or 0 when not looping.
+var _loop_length: float = 0.0
+# Song time held while paused.
+var _paused_song_time: float = 0.0
 
 
 func _ready() -> void:
@@ -46,14 +56,33 @@ func _ready() -> void:
 	_player.finished.connect(_on_player_finished)
 
 
+## Does the slow one-off setup for a song so that start() doesn't hitch. start() calls
+## it anyway; call it earlier (song select, loading screen) to move the hitch there.
+func prepare(new_song: SongData) -> void:
+	# MP3 and Ogg streams loop via a flag on the stream resource itself. This has to be
+	# set before the stream is registered as a sample, which bakes the loop mode in.
+	if "loop" in new_song.stream:
+		new_song.stream.loop = loop
+	# Web plays audio as "samples": the whole file is decoded up front the first time a
+	# stream is used, which blocks for around a second.
+	var playback_type: int = ProjectSettings.get_setting_with_override("audio/general/default_playback_type")
+	if playback_type == AudioServer.PLAYBACK_TYPE_SAMPLE \
+			and not AudioServer.is_stream_registered_as_sample(new_song.stream):
+		AudioServer.register_stream_as_sample(new_song.stream)
+
+
 func start(new_song: SongData) -> void:
 	song = new_song
+	prepare(song)
+	_loop_length = song.stream.get_length() if loop and "loop" in song.stream else 0.0
 	_player.stream = song.stream
+	_player.stream_paused = false
+	is_paused = false
 	_player.play()
-	# The first sample isn't audible until the next mix has gone through the output buffer.
 	output_latency = AudioServer.get_output_latency()
-	var start_delay := AudioServer.get_time_to_next_mix() + output_latency
-	_anchor_usec = Time.get_ticks_usec() + int(start_delay * 1000000.0)
+	# play() returning doesn't mean audio is running, so the clock isn't started here.
+	# _process starts it from the audio position once that is seen moving.
+	_awaiting_audio = true
 	raw_error = 0.0
 	smoothed_error = 0.0
 	snap_count = 0
@@ -65,12 +94,54 @@ func start(new_song: SongData) -> void:
 
 func stop() -> void:
 	_player.stop()
+	_player.stream_paused = false
 	is_playing = false
+	is_paused = false
+	_awaiting_audio = false
+	_loop_length = 0.0
+
+
+## Freezes the audio and song time until resume().
+func pause() -> void:
+	if not is_playing or is_paused:
+		return
+	_paused_song_time = get_song_time()
+	is_paused = true
+	_player.stream_paused = true
+
+
+func resume() -> void:
+	if not is_paused:
+		return
+	is_paused = false
+	_player.stream_paused = false
+	if _awaiting_audio:
+		# Paused before the audio got going: wait to see it move all over again.
+		_last_playback_position = 0.0
+	else:
+		# pause() froze song time at once, but the audio ran on until the next mix.
+		# Pick up from where the audio really stopped, not from the frozen value.
+		var audio_time := _player.get_playback_position() + AudioServer.get_time_since_last_mix() - output_latency
+		_anchor_usec = Time.get_ticks_usec() - int(audio_time * 1000000.0)
+	smoothed_error = 0.0
+	_stalled_time = 0.0
 
 
 ## Song position being heard right now, in seconds. Negative just after start().
 func get_song_time() -> float:
-	return (Time.get_ticks_usec() - _anchor_usec) / 1000000.0
+	if is_paused:
+		return _paused_song_time
+	if _awaiting_audio:
+		return -output_latency
+	var elapsed := (Time.get_ticks_usec() - _anchor_usec) / 1000000.0
+	if _loop_length > 0.0 and elapsed > 0.0:
+		return fmod(elapsed, _loop_length)
+	return elapsed
+
+
+## Length of one pass of the song while looping, otherwise 0.
+func get_loop_length() -> float:
+	return _loop_length
 
 
 func get_beat_position() -> float:
@@ -78,22 +149,33 @@ func get_beat_position() -> float:
 
 
 func _process(delta: float) -> void:
-	if not is_playing or not _player.playing:
+	if not is_playing or is_paused or not _player.playing:
 		return
 
 	var playback_position := _player.get_playback_position()
-	if playback_position <= 0.0:
-		# Not mixed yet, so there is nothing to compare against.
+	var audio_time := playback_position + AudioServer.get_time_since_last_mix() - output_latency
+
+	if _awaiting_audio:
+		# The position can sit at zero, or on web at a small nonzero value, for a while
+		# after play(). Only a change from one nonzero value to another means it's running.
+		var is_moving := _last_playback_position > 0.0 and playback_position > _last_playback_position
+		_last_playback_position = playback_position
+		if is_moving:
+			_awaiting_audio = false
+			_anchor_usec = Time.get_ticks_usec() - int(audio_time * 1000000.0)
 		return
+
 	_update_reliability(playback_position, delta)
 	if not drift_correction_enabled or not audio_position_reliable:
 		return
 
-	var audio_time := playback_position + AudioServer.get_time_since_last_mix() - output_latency
 	raw_error = audio_time - get_song_time()
+	if _loop_length > 0.0:
+		# The clock and the audio don't wrap on the same frame; compare the short way round.
+		raw_error = wrapf(raw_error, -_loop_length / 2.0, _loop_length / 2.0)
 
 	if absf(raw_error) > snap_threshold:
-		_shift(raw_error)
+		_anchor_usec = Time.get_ticks_usec() - int(audio_time * 1000000.0)
 		smoothed_error = 0.0
 		snap_count += 1
 		return

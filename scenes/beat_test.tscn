@@ -2,153 +2,247 @@
 
 [ext_resource type="Script" uid="uid://dbusjriyouom2" path="res://scenes/beat_test.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
-[ext_resource type="Script" path="res://scenes/note_lane.gd" id="3_lane"]
+[ext_resource type="Script" uid="uid://bpbcsrmc8g4xs" path="res://scenes/note_lane.gd" id="3_lane"]
+[ext_resource type="PackedScene" path="res://scenes/note.tscn" id="4_note"]
+[ext_resource type="Script" path="res://scenes/dancer.gd" id="5_dancer"]
 
-[node name="BeatTest" type="Control" unique_id=459559189]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[sub_resource type="Environment" id="Environment_stage"]
+background_mode = 1
+background_color = Color(0.04, 0.03, 0.08, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.6, 0.55, 0.8, 1)
+ambient_light_energy = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_floor"]
+albedo_color = Color(0.16, 0.12, 0.26, 1)
+roughness = 0.6
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_floor"]
+material = SubResource("StandardMaterial3D_floor")
+size = Vector2(60, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dancer"]
+albedo_color = Color(1, 0.35, 0.6, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_dancer"]
+material = SubResource("StandardMaterial3D_dancer")
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="Curve3D" id="Curve3D_lane"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rail"]
+shading_mode = 0
+albedo_color = Color(0.35, 0.3, 0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_marker"]
+shading_mode = 0
+albedo_color = Color(0.41, 0.41, 0.41, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_marker"]
+inner_radius = 0.42
+outer_radius = 0.56
+rings = 48
+ring_segments = 16
+
+[node name="BeatTest" type="Node3D" unique_id=459559189]
 script = ExtResource("1_script")
 
 [node name="SongClock" type="Node" parent="." unique_id=753153340]
 unique_name_in_owner = true
 script = ExtResource("2_clock")
 
-[node name="Center" type="CenterContainer" parent="." unique_id=1960298608]
-layout_mode = 1
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_stage")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+rotation_degrees = Vector3(-55, -30, 0)
+shadow_enabled = true
+
+[node name="Camera" type="Camera3D" parent="."]
+position = Vector3(0, 2.5, 10)
+rotation_degrees = Vector3(-6, 0, 0)
+fov = 50.0
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_floor")
+
+[node name="Dancer" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("5_dancer")
+
+[node name="Body" type="MeshInstance3D" parent="Dancer"]
+position = Vector3(0, 0.75, 0)
+mesh = SubResource("BoxMesh_dancer")
+
+[node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
+unique_name_in_owner = true
+position = Vector3(0, 0.4, 4)
+curve = SubResource("Curve3D_lane")
+script = ExtResource("3_lane")
+note_scene = ExtResource("4_note")
+
+[node name="Rail" type="CSGPolygon3D" parent="NoteLane"]
+cast_shadow = 0
+polygon = PackedVector2Array(-0.03, -0.03, -0.03, 0.03, 0.03, 0.03, 0.03, -0.03)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.25
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_rail")
+
+[node name="HitMarker" type="PathFollow3D" parent="NoteLane"]
+progress = 9.0
+loop = false
+
+[node name="Ring" type="MeshInstance3D" parent="NoteLane/HitMarker"]
+rotation_degrees = Vector3(90, 0, 0)
+mesh = SubResource("TorusMesh_marker")
+surface_material_override/0 = SubResource("StandardMaterial3D_marker")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Margin" type="MarginContainer" parent="UI"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
 
-[node name="VBox" type="VBoxContainer" parent="Center" unique_id=550167069]
-custom_minimum_size = Vector2(720, 0)
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="SongSelect" type="OptionButton" parent="Center/VBox" unique_id=1092755371]
+[node name="JudgmentLabel" type="Label" parent="UI/Margin" unique_id=852156795]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 40
+text = "Press Play"
+horizontal_alignment = 1
+
+[node name="Transport" type="HBoxContainer" parent="UI/Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="PlayPauseButton" type="Button" parent="UI/Margin/Transport"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
 focus_mode = 0
+text = "Play"
 
-[node name="NoteLane" type="Control" parent="Center/VBox"]
+[node name="RestartButton" type="Button" parent="UI/Margin/Transport"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(720, 120)
+custom_minimum_size = Vector2(120, 40)
 layout_mode = 2
-script = ExtResource("3_lane")
+focus_mode = 0
+disabled = true
+text = "Restart"
 
-[node name="JudgmentLabel" type="Label" parent="Center/VBox" unique_id=852156795]
-unique_name_in_owner = true
+[node name="Tray" type="FoldableContainer" parent="UI/Margin"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-text = "Press Space on the beat"
-horizontal_alignment = 1
+size_flags_horizontal = 0
+size_flags_vertical = 0
+focus_mode = 0
+folded = true
+title = "Song & calibration"
 
-[node name="StatsLabel" type="Label" parent="Center/VBox" unique_id=480075964]
-unique_name_in_owner = true
+[node name="VBox" type="VBoxContainer" parent="UI/Margin/Tray"]
+custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
-horizontal_alignment = 1
+theme_override_constants/separation = 8
 
-[node name="ClockLabel" type="Label" parent="Center/VBox" unique_id=2035328736]
-unique_name_in_owner = true
+[node name="SongRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 12
-horizontal_alignment = 1
+theme_override_constants/separation = 16
 
-[node name="Separator" type="HSeparator" parent="Center/VBox" unique_id=1817607368]
+[node name="SongLabel" type="Label" parent="UI/Margin/Tray/VBox/SongRow"]
 layout_mode = 2
+text = "Song"
 
-[node name="Grid" type="GridContainer" parent="Center/VBox" unique_id=703798399]
-layout_mode = 2
-theme_override_constants/h_separation = 16
-theme_override_constants/v_separation = 8
-columns = 3
-
-[node name="AvLabel" type="Label" parent="Center/VBox/Grid" unique_id=209540487]
-layout_mode = 2
-text = "A/V offset (delays the visuals)"
-
-[node name="AvSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=260726249]
+[node name="SongSelect" type="OptionButton" parent="UI/Margin/Tray/VBox/SongRow" unique_id=1092755371]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
+focus_mode = 0
+
+[node name="Separator" type="HSeparator" parent="UI/Margin/Tray/VBox" unique_id=1817607368]
+layout_mode = 2
+
+[node name="AvRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
+layout_mode = 2
+
+[node name="AvLabel" type="Label" parent="UI/Margin/Tray/VBox/AvRow" unique_id=209540487]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "A/V offset - Until it looks right"
+
+[node name="AvValue" type="Label" parent="UI/Margin/Tray/VBox/AvRow" unique_id=2026350891]
+unique_name_in_owner = true
+layout_mode = 2
+horizontal_alignment = 2
+
+[node name="AvSlider" type="HSlider" parent="UI/Margin/Tray/VBox" unique_id=260726249]
+unique_name_in_owner = true
+layout_mode = 2
 focus_mode = 0
 min_value = -300.0
 max_value = 500.0
 step = 5.0
 
-[node name="AvValue" type="Label" parent="Center/VBox/Grid" unique_id=2026350891]
+[node name="InputRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox"]
+layout_mode = 2
+
+[node name="InputLabel" type="Label" parent="UI/Margin/Tray/VBox/InputRow" unique_id=84256575]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Input lag - Until it feels right"
+
+[node name="InputValue" type="Label" parent="UI/Margin/Tray/VBox/InputRow" unique_id=801692389]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 horizontal_alignment = 2
 
-[node name="InputLabel" type="Label" parent="Center/VBox/Grid" unique_id=84256575]
-layout_mode = 2
-text = "Input lag (judging only, tune by ear)"
-
-[node name="InputSlider" type="HSlider" parent="Center/VBox/Grid" unique_id=793250805]
+[node name="InputSlider" type="HSlider" parent="UI/Margin/Tray/VBox" unique_id=793250805]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
 focus_mode = 0
 max_value = 200.0
 step = 5.0
 
-[node name="InputValue" type="Label" parent="Center/VBox/Grid" unique_id=801692389]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-horizontal_alignment = 2
-
-[node name="Authoring" type="HBoxContainer" parent="Center/VBox" unique_id=2045505143]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="BpmLabel" type="Label" parent="Center/VBox/Authoring" unique_id=869965511]
-layout_mode = 2
-text = "BPM"
-
-[node name="BpmSpin" type="SpinBox" parent="Center/VBox/Authoring" unique_id=841259998]
+[node name="StatsLabel" type="Label" parent="UI/Margin/Tray/VBox" unique_id=480075964]
 unique_name_in_owner = true
 layout_mode = 2
-min_value = 30.0
-max_value = 300.0
-step = 0.01
-value = 120.0
 
-[node name="FirstBeatLabel" type="Label" parent="Center/VBox/Authoring" unique_id=1814910171]
-layout_mode = 2
-text = "First beat (s)"
-
-[node name="FirstBeatSpin" type="SpinBox" parent="Center/VBox/Authoring" unique_id=735413997]
+[node name="ResetStatsButton" type="Button" parent="UI/Margin/Tray/VBox" unique_id=320669657]
 unique_name_in_owner = true
 layout_mode = 2
-min_value = -5.0
-max_value = 30.0
-step = 0.001
-
-[node name="Buttons" type="HBoxContainer" parent="Center/VBox" unique_id=1396253003]
-layout_mode = 2
-theme_override_constants/separation = 16
-alignment = 1
-
-[node name="StartButton" type="Button" parent="Center/VBox/Buttons" unique_id=1790615873]
-unique_name_in_owner = true
-layout_mode = 2
-focus_mode = 0
-text = "Start"
-
-[node name="ResetStatsButton" type="Button" parent="Center/VBox/Buttons" unique_id=320669657]
-unique_name_in_owner = true
-layout_mode = 2
+size_flags_horizontal = 0
 focus_mode = 0
 text = "Reset stats"
+
+[node name="Separator2" type="HSeparator" parent="UI/Margin/Tray/VBox"]
+layout_mode = 2
+
+[node name="ClockLabel" type="Label" parent="UI/Margin/Tray/VBox" unique_id=2035328736]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 12

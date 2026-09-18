@@ -1,51 +1,89 @@
-extends Control
-## Notes scroll right to left and cross a stationary bar exactly on their beat.
+extends Path3D
+## Notes ride the path from its start and pass the hit marker exactly on their beat.
 ##
-## The owner feeds in the time to draw for (already shifted by the A/V offset) and
-## the bar colour each frame; this node only draws.
+## The owner feeds in the time to show (already shifted by the A/V offset) and the
+## marker colour each frame; this node only positions things. The curve can be any
+## shape: notes move along it at constant speed, and the marker and rail follow it.
+## The hit point is wherever the HitMarker child sits on the path.
 
-## Seconds a note takes to travel from the right edge to the bar.
+## Seconds a note takes to travel from the start of the path to the hit marker.
 @export var lead_time: float = 2.0
-## Distance of the bar from the left edge, in pixels. Notes keep going past it.
-@export var bar_x: float = 100.0
-@export var bar_width: float = 8.0
-@export var note_radius: float = 22.0
-@export var note_color: Color = Color.WHITE
-@export var lane_color: Color = Color(0.12, 0.12, 0.14)
+## What rides the path for each note. Any Node3D; the lane supplies the PathFollow3D.
+@export var note_scene: PackedScene
+## Fraction of the path over which a note grows in, so that it never pops into view.
+@export_range(0.0, 0.5) var grow_in_ratio: float = 0.05
 
 var song: SongData
 var time: float = 0.0
-var bar_color: Color = Color.DIM_GRAY
+## Length of one pass of the song when it loops, otherwise 0.
+var loop_length: float = 0.0
+var marker_color: Color = Color.DIM_GRAY:
+	set(value):
+		marker_color = value
+		if _marker_material != null:
+			_marker_material.albedo_color = value
+
+# Pool of notes, reused every frame. The first _used are on the path.
+var _notes: Array[PathFollow3D] = []
+var _used: int = 0
+var _hit_ratio: float = 1.0
+
+@onready var _marker: PathFollow3D = $HitMarker
+@onready var _marker_material: StandardMaterial3D = $HitMarker/Ring.get_surface_override_material(0)
 
 
 func _ready() -> void:
-	clip_contents = true
+	marker_color = marker_color
 
 
 func _process(_delta: float) -> void:
-	queue_redraw()
+	_used = 0
+	_hit_ratio = _marker.progress_ratio
+	if song != null and _hit_ratio > 0.0:
+		_place_pass(0.0)
+		if loop_length > 0.0:
+			# Around the seam, the previous and next passes are on the path too.
+			_place_pass(-loop_length)
+			_place_pass(loop_length)
+	for i in range(_used, _notes.size()):
+		_notes[i].visible = false
 
 
-func _draw() -> void:
-	draw_rect(Rect2(Vector2.ZERO, size), lane_color)
-	if song != null:
-		_draw_notes()
-	draw_rect(Rect2(bar_x - bar_width / 2.0, 0.0, bar_width, size.y), bar_color)
-
-
-func _draw_notes() -> void:
-	var pixels_per_second := (size.x - bar_x) / lead_time
-	# Time span currently on screen, padded so notes slide fully off both edges.
-	var margin := note_radius / pixels_per_second
-	var earliest := time - bar_x / pixels_per_second - margin
-	var latest := minf(time + lead_time + margin, song.stream.get_length())
+# Places one pass of the song, which starts at [param pass_start] in lane time.
+func _place_pass(pass_start: float) -> void:
+	# Time span currently on the path: from the far end, past the marker, to the start.
+	var time_past_marker := lead_time * (1.0 - _hit_ratio) / _hit_ratio
+	var earliest := time - pass_start - time_past_marker
+	var latest := minf(time - pass_start + lead_time, song.stream.get_length())
 
 	var first_beat := maxi(0, ceili(song.time_to_beat(earliest)))
 	var last_beat := floori(song.time_to_beat(latest))
 	for beat in range(first_beat, last_beat + 1):
-		var x := bar_x + (song.beat_to_time(beat) - time) * pixels_per_second
-		var color := note_color
-		if x < bar_x:
-			# Fade out once past the bar.
-			color.a = clampf(x / bar_x, 0.0, 1.0)
-		draw_circle(Vector2(x, size.y / 2.0), note_radius, color, true, -1.0, true)
+		var until_hit := pass_start + song.beat_to_time(beat) - time
+		_place_note(_hit_ratio * (1.0 - until_hit / lead_time))
+
+
+func _place_note(ratio: float) -> void:
+	if _used == _notes.size():
+		_notes.append(_make_note())
+	var note := _notes[_used]
+	_used += 1
+
+	note.visible = true
+	note.progress_ratio = clampf(ratio, 0.0, 1.0)
+	var note_scale := 1.0
+	if ratio < grow_in_ratio:
+		note_scale = ratio / grow_in_ratio
+	elif ratio > _hit_ratio:
+		# Shrink away once past the marker.
+		note_scale = (1.0 - ratio) / (1.0 - _hit_ratio)
+	# Scale the visual, not the follower: the follower's transform belongs to the path.
+	(note.get_child(0) as Node3D).scale = Vector3.ONE * clampf(note_scale, 0.001, 1.0)
+
+
+func _make_note() -> PathFollow3D:
+	var note := PathFollow3D.new()
+	note.loop = false
+	note.add_child(note_scene.instantiate())
+	add_child(note)
+	return note

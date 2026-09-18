@@ -1,5 +1,5 @@
-extends Control
-## Debug scene proving the core timing loop: play a song, press "hit" on the beat.
+extends Node3D
+## Test stage proving the core timing loop: play a song, press "hit" on the beat.
 
 ## Judgment tiers, best first: name and the largest absolute error (seconds) that earns it.
 ## Anything beyond the last tier is "Bad".
@@ -9,8 +9,10 @@ const TIERS: Array[Dictionary] = [
 	{"name": "Good", "window": 0.080},
 	{"name": "Okay", "window": 0.120},
 ]
-# The bar is green inside this tier's window, red outside.
+# The hit marker is green inside this tier's window, red outside.
 const GREEN_TIER := 0
+const HINT_STOPPED := "Press Play"
+const HINT_PLAYING := "Tap or press Space on the beat"
 
 ## Every SongData resource in this folder is offered in the song dropdown.
 const SONGS_DIR := "res://songs"
@@ -27,10 +29,12 @@ var input_offset: float = 0.0
 
 var _songs: Array[SongData] = []
 var _errors: Array[float] = []
+var _text_before_pause: String = ""
 
 @onready var _clock: SongClock = %SongClock
 @onready var _song_select: OptionButton = %SongSelect
-@onready var _lane: Control = %NoteLane
+@onready var _lane: Path3D = %NoteLane
+@onready var _dancer: Node3D = %Dancer
 @onready var _judgment_label: Label = %JudgmentLabel
 @onready var _stats_label: Label = %StatsLabel
 @onready var _clock_label: Label = %ClockLabel
@@ -38,9 +42,8 @@ var _errors: Array[float] = []
 @onready var _av_value: Label = %AvValue
 @onready var _input_slider: HSlider = %InputSlider
 @onready var _input_value: Label = %InputValue
-@onready var _bpm_spin: SpinBox = %BpmSpin
-@onready var _first_beat_spin: SpinBox = %FirstBeatSpin
-@onready var _start_button: Button = %StartButton
+@onready var _play_pause_button: Button = %PlayPauseButton
+@onready var _restart_button: Button = %RestartButton
 
 
 func _ready() -> void:
@@ -53,12 +56,10 @@ func _ready() -> void:
 	_song_select.item_selected.connect(_on_song_selected)
 	_av_slider.value_changed.connect(_on_av_slider_changed)
 	_input_slider.value_changed.connect(_on_input_slider_changed)
-	# Live tweaks for authoring by ear. Not saved: copy the values into the song's .tres.
-	_bpm_spin.value_changed.connect(func(value: float) -> void: song.bpm = value)
-	_first_beat_spin.value_changed.connect(func(value: float) -> void: song.first_beat_offset = value)
-	_start_button.pressed.connect(_on_start_pressed)
+	_play_pause_button.pressed.connect(_on_play_pause_pressed)
+	_restart_button.pressed.connect(_restart)
 	%ResetStatsButton.pressed.connect(_reset_stats)
-	_clock.finished.connect(func() -> void: _start_button.text = "Start")
+	_clock.finished.connect(_update_transport)
 
 
 func _load_songs() -> void:
@@ -79,50 +80,92 @@ func _load_songs() -> void:
 func _on_song_selected(index: int) -> void:
 	_clock.stop()
 	song = _songs[index]
-	_bpm_spin.set_value_no_signal(song.bpm)
-	_first_beat_spin.set_value_no_signal(song.first_beat_offset)
-	_start_button.text = "Start"
-	_judgment_label.text = "Press Space on the beat"
+	_clock.prepare(song)
+	_judgment_label.text = HINT_STOPPED
 	_reset_stats()
+	_update_transport()
 
 
 func _input(event: InputEvent) -> void:
-	if not _clock.is_playing:
-		return
 	if event.is_action_pressed("hit") and not event.is_echo():
-		# Sample the clock here rather than in _process: this is as close to the
-		# physical press as the engine lets us get.
-		_judge(_clock.get_song_time() - av_offset - input_offset)
+		_hit()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	# Taps are taken here rather than in _input so that the GUI gets first refusal:
+	# a tap on a button or the tray is not also a hit.
+	if _is_tap(event):
+		_hit()
+	elif event.is_action_pressed("ui_cancel") and _clock.is_playing:
+		_set_paused(not _clock.is_paused)
+
+
+func _is_tap(event: InputEvent) -> bool:
+	if event is InputEventScreenTouch:
+		# Every finger counts, so two thumbs can alternate.
+		return event.pressed
+	# Clicks count too, for desktop. A touch also arrives as an emulated click,
+	# which must not be counted a second time.
+	return event is InputEventMouseButton and event.pressed \
+			and event.button_index == MOUSE_BUTTON_LEFT \
+			and event.device != InputEvent.DEVICE_ID_EMULATION
+
+
+func _hit() -> void:
+	if _clock.is_paused:
+		return
+	# Sample the clock here rather than in _process: this is as close to the
+	# physical press as the engine lets us get.
+	var time := _clock.get_song_time() - av_offset - input_offset
+	_dancer.bounce()
+	if _clock.is_playing:
+		_judge(time)
 
 
 func _process(_delta: float) -> void:
 	_lane.song = song
+	_lane.loop_length = _clock.get_loop_length()
 	if not _clock.is_playing:
 		_lane.time = 0.0
-		_lane.bar_color = Color.DIM_GRAY
+		_lane.marker_color = Color.DIM_GRAY
 		return
 
 	var visual_time := _clock.get_song_time() - av_offset
 	_lane.time = visual_time
 	if absf(_error_to_nearest_beat(visual_time)) <= TIERS[GREEN_TIER].window:
-		_lane.bar_color = Color.GREEN
+		_lane.marker_color = Color.GREEN
 	else:
-		_lane.bar_color = Color.RED
+		_lane.marker_color = Color.RED
 
-	_clock_label.text = "beat %.2f   clock vs audio: %+.1f ms (smoothed %+.1f)   snaps: %d   reported latency: %.0f ms%s" % [
+	_clock_label.text = "beat %.2f
+clock vs audio: %+.1f ms (smoothed %+.1f)
+snaps: %d   reported latency: %.0f ms%s" % [
 		_clock.get_beat_position(),
 		_clock.raw_error * 1000.0,
 		_clock.smoothed_error * 1000.0,
 		_clock.snap_count,
 		_clock.output_latency * 1000.0,
-		"" if _clock.audio_position_reliable else "   AUDIO POSITION STALLED - correction off",
+		"" if _clock.audio_position_reliable else "
+AUDIO POSITION STALLED - correction off",
 	]
 
 
 # Signed distance, in seconds, from the nearest beat. Negative is early.
 func _error_to_nearest_beat(time: float) -> float:
-	var nearest_beat := roundf(song.time_to_beat(time))
-	return time - song.beat_to_time(nearest_beat)
+	var last_beat := floorf(song.time_to_beat(song.stream.get_length()))
+	var times := [time]
+	var loop_length := _clock.get_loop_length()
+	if loop_length > 0.0:
+		# Near the seam the nearest beat can belong to the previous or next pass.
+		times.append_array([time - loop_length, time + loop_length])
+
+	var best := INF
+	for t: float in times:
+		var beat := clampf(roundf(song.time_to_beat(t)), 0.0, last_beat)
+		var error := t - song.beat_to_time(beat)
+		if absf(error) < absf(best):
+			best = error
+	return best
 
 
 func _judge(time: float) -> void:
@@ -154,8 +197,9 @@ func _update_stats(last_error: float = NAN) -> void:
 	for e in _errors:
 		variance += (e - mean) ** 2
 	variance /= _errors.size()
-	_stats_label.text = "last %+.0f ms   mean %+.1f ms   std dev %.1f ms   n = %d" % [
-		last_error * 1000.0, mean * 1000.0, sqrt(variance) * 1000.0, _errors.size()]
+	_stats_label.text = "last %+.0f ms   n = %d
+mean %+.1f ms   std dev %.1f ms" % [
+		last_error * 1000.0, _errors.size(), mean * 1000.0, sqrt(variance) * 1000.0]
 
 
 func _reset_stats() -> void:
@@ -163,17 +207,44 @@ func _reset_stats() -> void:
 	_update_stats()
 
 
-func _on_start_pressed() -> void:
+func _on_play_pause_pressed() -> void:
+	if _clock.is_playing:
+		_set_paused(not _clock.is_paused)
+	else:
+		_restart()
+
+
+func _restart() -> void:
 	_clock.start(song)
-	_start_button.text = "Restart"
+	_judgment_label.text = HINT_PLAYING
 	_reset_stats()
+	_update_transport()
+
+
+func _set_paused(paused: bool) -> void:
+	if paused:
+		_clock.pause()
+		_text_before_pause = _judgment_label.text
+		_judgment_label.text = "Paused"
+	else:
+		_clock.resume()
+		_judgment_label.text = _text_before_pause
+	_update_transport()
+
+
+func _update_transport() -> void:
+	var running := _clock.is_playing and not _clock.is_paused
+	_play_pause_button.text = "Pause" if running else "Play"
+	_restart_button.disabled = not _clock.is_playing
 
 
 func _on_av_slider_changed(value: float) -> void:
 	av_offset = value / 1000.0
 	_av_value.text = "%+d ms" % int(value)
+	_reset_stats()
 
 
 func _on_input_slider_changed(value: float) -> void:
 	input_offset = value / 1000.0
 	_input_value.text = "%d ms" % int(value)
+	_reset_stats()
