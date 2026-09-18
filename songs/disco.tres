@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SongData" load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://songs/song_data.gd" id="1_script"]
+[ext_resource type="AudioStream" path="res://Tracks/atlasaudio-disco-518074.mp3" id="2_stream"]
+
+[resource]
+script = ExtResource("1_script")
+title = "Disco"
+stream = ExtResource("2_stream")
+bpm = 122.0
+first_beat_offset = 0.02
