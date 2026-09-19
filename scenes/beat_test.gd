@@ -117,7 +117,7 @@ func _hit() -> void:
 	# Sample the clock here rather than in _process: this is as close to the
 	# physical press as the engine lets us get.
 	var time := _clock.get_song_time() - av_offset - input_offset
-	_dancer.bounce()
+	_dancer.hit()
 	if _clock.is_playing:
 		_judge(time)
 
@@ -220,6 +220,7 @@ func _restart() -> void:
 	_judgment_label.text = HINT_PLAYING
 	_reset_stats()
 	_update_transport()
+	_dancer.start_idle()
 
 
 func _set_paused(paused: bool) -> void:
@@ -227,9 +228,11 @@ func _set_paused(paused: bool) -> void:
 		_clock.pause()
 		_text_before_pause = _judgment_label.text
 		_judgment_label.text = "Paused"
+		_dancer.pause()
 	else:
 		_clock.resume()
 		_judgment_label.text = _text_before_pause
+		_dancer.play()
 	_update_transport()
 
 
