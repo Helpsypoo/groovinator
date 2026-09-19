@@ -6,12 +6,17 @@ extends Path3D
 ## shape: notes move along it at constant speed, and the marker and rail follow it.
 ## The hit point is wherever the HitMarker child sits on the path.
 
+# Restarting an emitter kills its live particles, so back-to-back bursts take turns.
+const BURST_POOL_SIZE := 3
+
 ## Seconds a note takes to travel from the start of the path to the hit marker.
 @export var lead_time: float = 2.0
 ## What rides the path for each note. Any Node3D; the lane supplies the PathFollow3D.
 @export var note_scene: PackedScene
 ## Fraction of the path over which a note grows in, so that it never pops into view.
 @export_range(0.0, 0.5) var grow_in_ratio: float = 0.05
+## What burst() fires at the hit marker: a one-shot CPUParticles3D, not emitting.
+@export var burst_scene: PackedScene
 
 var song: SongData
 var time: float = 0.0
@@ -27,6 +32,8 @@ var marker_color: Color = Color.DIM_GRAY:
 var _notes: Array[PathFollow3D] = []
 var _used: int = 0
 var _hit_ratio: float = 1.0
+var _bursts: Array[CPUParticles3D] = []
+var _next_burst: int = 0
 
 @onready var _marker: PathFollow3D = $HitMarker
 @onready var _marker_material: StandardMaterial3D = $HitMarker/Ring.get_surface_override_material(0)
@@ -34,6 +41,23 @@ var _hit_ratio: float = 1.0
 
 func _ready() -> void:
 	marker_color = marker_color
+	if burst_scene != null:
+		for i in BURST_POOL_SIZE:
+			_bursts.append(_make_burst())
+		# Draw one invisible burst now, so that the first real one doesn't hitch
+		# while its shader compiles.
+		var warm_up := _make_burst()
+		warm_up.color = Color.TRANSPARENT
+		warm_up.finished.connect(warm_up.queue_free)
+		warm_up.restart()
+
+
+## Fires a burst of particles at the hit marker.
+func burst() -> void:
+	if _bursts.is_empty():
+		return
+	_bursts[_next_burst].restart()
+	_next_burst = (_next_burst + 1) % _bursts.size()
 
 
 func _process(_delta: float) -> void:
@@ -87,3 +111,9 @@ func _make_note() -> PathFollow3D:
 	note.add_child(note_scene.instantiate())
 	add_child(note)
 	return note
+
+
+func _make_burst() -> CPUParticles3D:
+	var particles: CPUParticles3D = burst_scene.instantiate()
+	_marker.add_child(particles)
+	return particles

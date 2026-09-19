@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bpbcsrmc8g4xs" path="res://scenes/note_lane.gd" id="3_lane"]
 [ext_resource type="PackedScene" path="res://scenes/note.tscn" id="4_note"]
 [ext_resource type="Script" uid="uid://cd5vvpvx3j6ql" path="res://scenes/dancer.gd" id="5_dancer"]
+[ext_resource type="PackedScene" path="res://scenes/perfect_burst.tscn" id="6_burst"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -31,10 +32,10 @@ size = Vector3(1.5, 1.5, 1.5)
 
 [sub_resource type="Curve3D" id="Curve3D_lane"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, -6, 0, 0),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(4.6482368, -0.631165, 1.9954119, -4.6482368, 0.631165, -1.9954119, 11.275482, 2.042306, -4.4649353, 1.1797953, 0.7758479, -1.217041, -1.1797953, -0.7758479, 1.217041, 5.0807443, 0.30910456, -4.331936, 1.5816545, -0.0834932, -0.90757656, -1.5816545, 0.0834932, 0.90757656, 1.8798022, -0.008826643, 0.002620697, 0, 0, 0, 0, 0, 0, -6, 0, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 2
+point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rail"]
 shading_mode = 0
@@ -76,15 +77,16 @@ unique_name_in_owner = true
 script = ExtResource("5_dancer")
 
 [node name="Body" type="MeshInstance3D" parent="Dancer" unique_id=1553446044]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.512484, 0.75, 0)
 mesh = SubResource("BoxMesh_dancer")
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3171021, 0.65793717, 4)
 curve = SubResource("Curve3D_lane")
 script = ExtResource("3_lane")
 note_scene = ExtResource("4_note")
+burst_scene = ExtResource("6_burst")
 
 [node name="Rail" type="CSGPolygon3D" parent="NoteLane" unique_id=1467947181]
 cast_shadow = 0
@@ -103,8 +105,8 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -3.0001342, 0, 0)
-progress = 9.0
+transform = Transform3D(0.049519572, 0.028411686, 0.99832064, -0.55675507, 0.83061993, 0.0039769695, -0.82916147, -0.55603755, 0.056951776, -2.3896163, 0.028035132, 0.3576716)
+progress = 17.156475
 loop = false
 
 [node name="Ring" type="MeshInstance3D" parent="NoteLane/HitMarker" unique_id=868466612]
@@ -209,7 +211,7 @@ focus_mode = 0
 min_value = -200.0
 max_value = 500.0
 step = 5.0
-value = 10.0
+value = 5.0
 
 [node name="InputRow" type="HBoxContainer" parent="UI/Margin/Tray/VBox" unique_id=1084157148]
 layout_mode = 2
@@ -230,7 +232,7 @@ layout_mode = 2
 focus_mode = 0
 max_value = 200.0
 step = 5.0
-value = 100.0
+value = 20.0
 
 [node name="StatsLabel" type="Label" parent="UI/Margin/Tray/VBox" unique_id=480075964]
 unique_name_in_owner = true

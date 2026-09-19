@@ -135,7 +135,7 @@ func _process(_delta: float) -> void:
 	if absf(_error_to_nearest_beat(visual_time)) <= TIERS[GREEN_TIER].window:
 		_lane.marker_color = Color.GREEN
 	else:
-		_lane.marker_color = Color.RED
+		_lane.marker_color = Color.DIM_GRAY
 
 	_clock_label.text = "beat %.2f
 clock vs audio: %+.1f ms (smoothed %+.1f)
@@ -178,6 +178,7 @@ func _judge(time: float) -> void:
 
 	if tier_name == TIERS[0].name:
 		_judgment_label.text = tier_name
+		_lane.burst()
 	else:
 		_judgment_label.text = "%s - %s" % [tier_name, "early" if error < 0.0 else "late"]
 

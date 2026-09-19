@@ -1,0 +1,67 @@
+[gd_scene format=3]
+
+[sub_resource type="Gradient" id="Gradient_jr5y4"]
+offsets = PackedFloat32Array(0, 0.25, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.35, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bjxd1"]
+gradient = SubResource("Gradient_jr5y4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l4t65"]
+resource_name = "Sparkle"
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_bjxd1")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_vpaye"]
+material = SubResource("StandardMaterial3D_l4t65")
+size = Vector2(0.35, 0.35)
+
+[sub_resource type="Curve" id="Curve_hl6gu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_drode"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.8, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_5rnfw"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.85, 0.4, 1, 1, 0.45, 0.7, 1)
+
+[node name="PerfectBurst" type="CPUParticles3D" unique_id=795807139]
+cast_shadow = 0
+emitting = false
+amount = 40
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.5
+mesh = SubResource("QuadMesh_vpaye")
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.05
+emission_ring_radius = 0.56
+emission_ring_inner_radius = 0.42
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+gravity = Vector3(0, -4, 0)
+initial_velocity_min = 1.5
+initial_velocity_max = 5.0
+damping_min = 3.0
+damping_max = 6.0
+scale_amount_min = 0.4
+scale_amount_curve = SubResource("Curve_hl6gu")
+color_ramp = SubResource("Gradient_drode")
+color_initial_ramp = SubResource("Gradient_5rnfw")
