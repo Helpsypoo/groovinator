@@ -53,6 +53,7 @@ var _paused_song_time: float = 0.0
 func _ready() -> void:
 	_player = AudioStreamPlayer.new()
 	add_child(_player)
+	_player.volume_db = -30
 	_player.finished.connect(_on_player_finished)
 
 

@@ -3,11 +3,24 @@
 [ext_resource type="Script" uid="uid://dbusjriyouom2" path="res://scenes/beat_test.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
 [ext_resource type="Script" uid="uid://bpbcsrmc8g4xs" path="res://scenes/note_lane.gd" id="3_lane"]
-[ext_resource type="PackedScene" path="res://scenes/note.tscn" id="4_note"]
-[ext_resource type="Texture2D" uid="uid://dlys5t8rjuhel" path="res://IsometricCharacter/Character0/Character0_Run.png" id="4_rj3qb"]
+[ext_resource type="Texture2D" uid="uid://eq3km2n2nh5e" path="res://Images/Characters/MikeFlap/mike-flap0.png" id="4_mw52i"]
+[ext_resource type="PackedScene" uid="uid://c5evh5bepqbnw" path="res://scenes/note.tscn" id="4_note"]
+[ext_resource type="Texture2D" uid="uid://dlys5t8rjuhel" path="res://Images/Characters/Character0/Character0_Run.png" id="4_rj3qb"]
 [ext_resource type="Script" uid="uid://cd5vvpvx3j6ql" path="res://scenes/dancer.gd" id="5_dancer"]
-[ext_resource type="Texture2D" uid="uid://b6ndivy0lj0on" path="res://IsometricCharacter/Character0/Character0_Sit.png" id="5_fkv28"]
+[ext_resource type="Texture2D" uid="uid://b6ndivy0lj0on" path="res://Images/Characters/Character0/Character0_Sit.png" id="5_fkv28"]
+[ext_resource type="Texture2D" uid="uid://bw2nbagwpsum7" path="res://Images/Characters/MikeFlap/mike-flap1.png" id="5_pbwxl"]
+[ext_resource type="Texture2D" uid="uid://b71s0at3a5jto" path="res://Images/Characters/MikeFlap/mike-flap2.png" id="6_5t8al"]
 [ext_resource type="PackedScene" path="res://scenes/perfect_burst.tscn" id="6_burst"]
+[ext_resource type="Texture2D" uid="uid://8imjuj0q4h58" path="res://Images/Characters/MikeFlap/mike-flap3.png" id="7_jn3u8"]
+[ext_resource type="Texture2D" uid="uid://jd4yladesa0t" path="res://Images/Characters/MikeFlap/mike-flap4.png" id="8_tyfo5"]
+[ext_resource type="Texture2D" uid="uid://cmym60fv86n5k" path="res://Images/Characters/MikeFlap/mike-flap5.png" id="9_jirss"]
+[ext_resource type="Texture2D" uid="uid://1g8ln8s46mlk" path="res://Images/Characters/MikeFlap/mike-flap6.png" id="10_v82gb"]
+[ext_resource type="Texture2D" uid="uid://dv0r21n6nchfj" path="res://Images/Characters/MikeFlap/mike-flap7.png" id="11_ftgvy"]
+[ext_resource type="Texture2D" uid="uid://dr7j8amywj7yn" path="res://Images/Characters/MikeFlap/mike-flap8.png" id="12_ue3px"]
+[ext_resource type="Texture2D" uid="uid://cx7xfg4o7irvd" path="res://Images/Characters/MikeFlap/mike-flap9.png" id="13_2vtla"]
+[ext_resource type="Texture2D" uid="uid://bx4nhvoxkbpab" path="res://Images/Characters/MikeFlap/mike-flap10.png" id="14_sciaf"]
+[ext_resource type="Texture2D" uid="uid://bic1tjjdv7lju" path="res://Images/Characters/MikeFlap/mike-flap11.png" id="15_8rxjc"]
+[ext_resource type="Texture2D" uid="uid://bye4ut1q5bnej" path="res://Images/Characters/MikeFlap/mike-standing.png" id="18_pbwxl"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -68,6 +81,47 @@ region = Rect2(1380, 0, 460, 460)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("4_mw52i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pbwxl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5t8al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_jn3u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tyfo5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_jirss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_v82gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ftgvy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ue3px")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2vtla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_sciaf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8rxjc")
+}],
+"loop": 0,
+"name": &"Flap",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_inevm")
 }, {
 "duration": 1.0,
@@ -98,6 +152,14 @@ animations = [{
 }],
 "loop": 0,
 "name": &"Sit",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_pbwxl")
+}],
+"loop": 1,
+"name": &"Stand",
 "speed": 5.0
 }]
 
@@ -158,9 +220,9 @@ mesh = SubResource("BoxMesh_dancer")
 
 [node name="DancerSprite" type="AnimatedSprite3D" parent="Dancer" unique_id=1251336013]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.952, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.952, 0)
 sprite_frames = SubResource("SpriteFrames_esf6n")
-animation = &"Run"
+animation = &"Stand"
 speed_scale = 2.0
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
@@ -188,7 +250,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.99832016, -0.55675507, 0.83061993, 0.0039769677, -0.82916147, -0.55603755, 0.056951746, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.99832004, -0.55675507, 0.83061993, 0.003976967, -0.82916147, -0.55603755, 0.056951743, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
