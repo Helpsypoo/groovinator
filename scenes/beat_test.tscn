@@ -158,7 +158,7 @@ mesh = SubResource("BoxMesh_dancer")
 
 [node name="DancerSprite" type="AnimatedSprite3D" parent="Dancer" unique_id=1251336013]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.9524779, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 1.952, 0)
 sprite_frames = SubResource("SpriteFrames_esf6n")
 animation = &"Run"
 speed_scale = 2.0
@@ -188,7 +188,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983203, -0.55675507, 0.83061993, 0.003976968, -0.82916147, -0.55603755, 0.056951754, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.99832016, -0.55675507, 0.83061993, 0.0039769677, -0.82916147, -0.55603755, 0.056951746, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
