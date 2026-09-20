@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dbusjriyouom2" path="res://scenes/beat_test.gd" id="1_script"]
 [ext_resource type="Script" uid="uid://bwfgm58ki0gk6" path="res://core/song_clock.gd" id="2_clock"]
 [ext_resource type="Script" uid="uid://bpbcsrmc8g4xs" path="res://scenes/note_lane.gd" id="3_lane"]
+[ext_resource type="Texture2D" uid="uid://dy5m4jurgp6g4" path="res://Images/Dancer/LOBSTER_CLAW_OPEN.png" id="4_5t8al"]
 [ext_resource type="Texture2D" uid="uid://eq3km2n2nh5e" path="res://Images/Characters/MikeFlap/mike-flap0.png" id="4_mw52i"]
 [ext_resource type="PackedScene" uid="uid://c5evh5bepqbnw" path="res://scenes/note.tscn" id="4_note"]
 [ext_resource type="Texture2D" uid="uid://dlys5t8rjuhel" path="res://Images/Characters/Character0/Character0_Run.png" id="4_rj3qb"]
 [ext_resource type="Script" uid="uid://cd5vvpvx3j6ql" path="res://scenes/dancer.gd" id="5_dancer"]
 [ext_resource type="Texture2D" uid="uid://b6ndivy0lj0on" path="res://Images/Characters/Character0/Character0_Sit.png" id="5_fkv28"]
+[ext_resource type="Texture2D" uid="uid://dmdu7tsvis40r" path="res://Images/Dancer/LOBSTER_CLAW_CLOSED.png" id="5_jn3u8"]
 [ext_resource type="Texture2D" uid="uid://bw2nbagwpsum7" path="res://Images/Characters/MikeFlap/mike-flap1.png" id="5_pbwxl"]
 [ext_resource type="Texture2D" uid="uid://b71s0at3a5jto" path="res://Images/Characters/MikeFlap/mike-flap2.png" id="6_5t8al"]
 [ext_resource type="PackedScene" path="res://scenes/perfect_burst.tscn" id="6_burst"]
@@ -20,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://cx7xfg4o7irvd" path="res://Images/Characters/MikeFlap/mike-flap9.png" id="13_2vtla"]
 [ext_resource type="Texture2D" uid="uid://bx4nhvoxkbpab" path="res://Images/Characters/MikeFlap/mike-flap10.png" id="14_sciaf"]
 [ext_resource type="Texture2D" uid="uid://bic1tjjdv7lju" path="res://Images/Characters/MikeFlap/mike-flap11.png" id="15_8rxjc"]
-[ext_resource type="Texture2D" uid="uid://bye4ut1q5bnej" path="res://Images/Characters/MikeFlap/mike-standing.png" id="18_pbwxl"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -79,6 +80,17 @@ region = Rect2(1380, 0, 460, 460)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_esf6n"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5t8al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jn3u8")
+}],
+"loop": 0,
+"name": &"CLAW",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_mw52i")
@@ -156,7 +168,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_pbwxl")
+"texture": ExtResource("4_5t8al")
 }],
 "loop": 1,
 "name": &"Stand",
@@ -220,9 +232,9 @@ mesh = SubResource("BoxMesh_dancer")
 
 [node name="DancerSprite" type="AnimatedSprite3D" parent="Dancer" unique_id=1251336013]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.952, 0)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 1.952, 0)
 sprite_frames = SubResource("SpriteFrames_esf6n")
-animation = &"Stand"
+animation = &"CLAW"
 speed_scale = 2.0
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
@@ -250,7 +262,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.99832004, -0.55675507, 0.83061993, 0.003976967, -0.82916147, -0.55603755, 0.056951743, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.9983199, -0.55675507, 0.83061993, 0.0039769667, -0.82916147, -0.55603755, 0.056951735, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 

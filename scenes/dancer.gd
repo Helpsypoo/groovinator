@@ -13,7 +13,7 @@ extends Node3D
 @export var idle_animation: StringName = &"Stand"
 ## Played once per hit, then back to idle. Must have Loop turned off in the
 ## SpriteFrames panel, or it never finishes.
-@export var hit_animation: StringName = &"Flap"
+@export var hit_animation: StringName = &"CLAW"
 
 @onready var _sprite: AnimatedSprite3D = %DancerSprite
 
