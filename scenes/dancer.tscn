@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://dad8j86cthj1y"]
+
+[ext_resource type="Script" uid="uid://cd5vvpvx3j6ql" path="res://scenes/dancer.gd" id="1_2hymp"]
+[ext_resource type="Texture2D" uid="uid://dlys5t8rjuhel" path="res://IsometricCharacter/Character0/Character0_Run.png" id="2_coskt"]
+[ext_resource type="Texture2D" uid="uid://buhur4jgui8sc" path="res://IsometricCharacter/Character0/Character0_Interact.png" id="2_up8c3"]
+[ext_resource type="Texture2D" uid="uid://b6ndivy0lj0on" path="res://IsometricCharacter/Character0/Character0_Sit.png" id="3_up8c3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dancer"]
+albedo_color = Color(1, 0.35, 0.6, 1)
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_dancer"]
+material = SubResource("StandardMaterial3D_dancer")
+size = Vector3(1.5, 1.5, 1.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gum5n"]
+atlas = ExtResource("2_up8c3")
+region = Rect2(0, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5seu1"]
+atlas = ExtResource("2_up8c3")
+region = Rect2(460, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cwek"]
+atlas = ExtResource("2_up8c3")
+region = Rect2(920, 460, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inevm"]
+atlas = ExtResource("2_coskt")
+region = Rect2(0, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tptjd"]
+atlas = ExtResource("2_coskt")
+region = Rect2(460, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75xjv"]
+atlas = ExtResource("2_coskt")
+region = Rect2(920, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h4jh"]
+atlas = ExtResource("2_coskt")
+region = Rect2(1380, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fp5u"]
+atlas = ExtResource("3_up8c3")
+region = Rect2(0, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_68sus"]
+atlas = ExtResource("3_up8c3")
+region = Rect2(460, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cc7ri"]
+atlas = ExtResource("3_up8c3")
+region = Rect2(920, 0, 460, 460)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os2wo"]
+atlas = ExtResource("3_up8c3")
+region = Rect2(1380, 0, 460, 460)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_esf6n"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gum5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5seu1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cwek")
+}],
+"loop": 0,
+"name": &"Doot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inevm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tptjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75xjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6h4jh")
+}],
+"loop": 1,
+"name": &"Run",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fp5u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_68sus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cc7ri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os2wo")
+}],
+"loop": 0,
+"name": &"Sit",
+"speed": 10.0
+}]
+
+[node name="Dancer" type="Node3D" unique_id=1076534894]
+script = ExtResource("1_2hymp")
+
+[node name="Body" type="MeshInstance3D" parent="." unique_id=1247876645]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+visible = false
+mesh = SubResource("BoxMesh_dancer")
+
+[node name="DancerSprite" type="AnimatedSprite3D" parent="." unique_id=1792047340]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.952, 0)
+sprite_frames = SubResource("SpriteFrames_esf6n")
+animation = &"Doot"
