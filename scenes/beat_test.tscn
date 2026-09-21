@@ -22,6 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://cx7xfg4o7irvd" path="res://Images/Characters/MikeFlap/mike-flap9.png" id="13_2vtla"]
 [ext_resource type="Texture2D" uid="uid://bx4nhvoxkbpab" path="res://Images/Characters/MikeFlap/mike-flap10.png" id="14_sciaf"]
 [ext_resource type="Texture2D" uid="uid://bic1tjjdv7lju" path="res://Images/Characters/MikeFlap/mike-flap11.png" id="15_8rxjc"]
+[ext_resource type="Texture2D" uid="uid://4djxjew3nrmj" path="res://Images/LOBSTER_MAN.png" id="23_ftgvy"]
+[ext_resource type="Texture2D" uid="uid://b3iq40pujxh67" path="res://Images/DANCE_TEXT.png" id="24_ue3px"]
+[ext_resource type="Texture2D" uid="uid://lkou6qql43rh" path="res://Images/GREENLADY.png" id="25_2vtla"]
+[ext_resource type="Texture2D" uid="uid://cri2bds8iyfi5" path="res://Images/LOBSTER.png" id="26_sciaf"]
+[ext_resource type="Texture2D" uid="uid://ci3uekdef7sx6" path="res://Images/LOBSTER_TEXT.png" id="27_8rxjc"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -262,7 +267,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983199, -0.55675507, 0.83061993, 0.0039769667, -0.82916147, -0.55603755, 0.056951735, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.99831957, -0.55675507, 0.83061993, 0.0039769653, -0.82916147, -0.55603755, 0.056951713, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -409,3 +414,34 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
+
+[node name="Painting" type="Node3D" parent="." unique_id=1798863479]
+transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 1.95, 0)
+visible = false
+
+[node name="Lobster Man" type="Sprite3D" parent="Painting" unique_id=1315316588]
+texture = ExtResource("23_ftgvy")
+
+[node name="Dance Text" type="Sprite3D" parent="Painting" unique_id=1633116091]
+texture = ExtResource("24_ue3px")
+
+[node name="Green Lady" type="Sprite3D" parent="Painting" unique_id=1721071124]
+texture = ExtResource("25_2vtla")
+
+[node name="Lobster" type="Sprite3D" parent="Painting" unique_id=1417419633]
+texture = ExtResource("26_sciaf")
+
+[node name="Lobster Man5" type="Sprite3D" parent="Painting" unique_id=1556938222]
+texture = ExtResource("23_ftgvy")
+
+[node name="Lobster Man6" type="Sprite3D" parent="Painting" unique_id=790178899]
+texture = ExtResource("23_ftgvy")
+
+[node name="Lobster Man7" type="Sprite3D" parent="Painting" unique_id=681890715]
+texture = ExtResource("23_ftgvy")
+
+[node name="Lobster Man8" type="Sprite3D" parent="Painting" unique_id=979876272]
+texture = ExtResource("23_ftgvy")
+
+[node name="Lobster Text" type="Sprite3D" parent="Painting" unique_id=941134207]
+texture = ExtResource("27_8rxjc")
