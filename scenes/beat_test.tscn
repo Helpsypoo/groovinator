@@ -25,8 +25,24 @@
 [ext_resource type="Texture2D" uid="uid://4djxjew3nrmj" path="res://Images/LOBSTER_MAN.png" id="23_ftgvy"]
 [ext_resource type="Texture2D" uid="uid://b3iq40pujxh67" path="res://Images/DANCE_TEXT.png" id="24_ue3px"]
 [ext_resource type="Texture2D" uid="uid://lkou6qql43rh" path="res://Images/GREENLADY.png" id="25_2vtla"]
+[ext_resource type="Texture2D" uid="uid://ddkjoux1kf716" path="res://Images/THE_TEXT.png" id="25_nar2i"]
 [ext_resource type="Texture2D" uid="uid://cri2bds8iyfi5" path="res://Images/LOBSTER.png" id="26_sciaf"]
 [ext_resource type="Texture2D" uid="uid://ci3uekdef7sx6" path="res://Images/LOBSTER_TEXT.png" id="27_8rxjc"]
+[ext_resource type="Texture2D" uid="uid://qhi7s0ht2iu8" path="res://Images/CURTAIN_DEMO.png" id="28_ph6e4"]
+[ext_resource type="Texture2D" uid="uid://bhqsavuihivm0" path="res://Images/PICTURE_FRAME.png" id="29_b8c7m"]
+[ext_resource type="Texture2D" uid="uid://cel447unh2los" path="res://Images/OF_TEXT.png" id="30_b618p"]
+[ext_resource type="Texture2D" uid="uid://dwyk57t81vy33" path="res://Images/REDHAIR_BODY.png" id="31_ysdi5"]
+[ext_resource type="Texture2D" uid="uid://b2acwqmsq2bqo" path="res://Images/REDHAIR_FACE_LEFT.png" id="32_phaxq"]
+[ext_resource type="Texture2D" uid="uid://bb3coq1pftn0u" path="res://Images/REDHAIR_HEAD.png" id="33_ph6e4"]
+[ext_resource type="Texture2D" uid="uid://dx6amrbv6uf4h" path="res://Images/SMOKER.png" id="34_1tmkv"]
+[ext_resource type="Texture2D" uid="uid://kygdttjvak5g" path="res://Images/STAGE.png" id="35_awsup"]
+[ext_resource type="Texture2D" uid="uid://cquumbdc8rphk" path="res://Images/STAGE_BACKGROUND.png" id="36_1k4fx"]
+[ext_resource type="Texture2D" uid="uid://twwu0tmyntl5" path="res://Images/STAGE_CORNER.png" id="37_o7mke"]
+[ext_resource type="Texture2D" uid="uid://dedjx6n8h4lnj" path="res://Images/STOOL.png" id="38_k7tks"]
+[ext_resource type="Texture2D" uid="uid://c2os6svwdl6xa" path="res://Images/THUMB.png" id="39_phaxq"]
+[ext_resource type="Texture2D" uid="uid://b3d0qjj27f418" path="res://Images/WHISPERLADY.png" id="40_ph6e4"]
+[ext_resource type="Texture2D" uid="uid://u8fypoi3a0ly" path="res://Images/YELLOWGUY_ARM.png" id="41_1tmkv"]
+[ext_resource type="Texture2D" uid="uid://csni3sn6ucr1y" path="res://Images/YELLOWGUY_HEAD.png" id="42_awsup"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -216,18 +232,20 @@ transform = Transform3D(0.8660254, 0.40957603, -0.28678823, 0, 0.57357645, 0.819
 shadow_enabled = true
 
 [node name="Camera" type="Camera3D" parent="." unique_id=790678043]
-transform = Transform3D(1, 0, 0, 0, 0.9945219, 0.104528464, 0, -0.104528464, 0.9945219, 0, 3.7359653, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7359653, 10)
 projection = 1
 fov = 50.0
-size = 6.725
+size = 8.977
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1504573806]
 transform = Transform3D(1, 0, 0, 0, 0.95726836, -0.28920108, 0, 0.28920108, 0.95726836, 0, 0, 0)
+visible = false
 mesh = SubResource("PlaneMesh_floor")
 
 [node name="Dancer" type="Node3D" parent="." unique_id=1369274278]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2255721, 0)
+visible = false
 script = ExtResource("5_dancer")
 
 [node name="Body" type="MeshInstance3D" parent="Dancer" unique_id=1553446044]
@@ -245,6 +263,7 @@ speed_scale = 2.0
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3171021, 0.65793717, 4)
+visible = false
 curve = SubResource("Curve3D_lane")
 script = ExtResource("3_lane")
 note_scene = ExtResource("4_note")
@@ -267,7 +286,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.99831957, -0.55675507, 0.83061993, 0.0039769653, -0.82916147, -0.55603755, 0.056951713, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.9983193, -0.55675507, 0.83061993, 0.0039769644, -0.82916147, -0.55603755, 0.0569517, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -416,32 +435,87 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 12
 
 [node name="Painting" type="Node3D" parent="." unique_id=1798863479]
-transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 1.95, 0)
-visible = false
+transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0, 3.725, 0)
 
-[node name="Lobster Man" type="Sprite3D" parent="Painting" unique_id=1315316588]
-texture = ExtResource("23_ftgvy")
+[node name="Picture Frame" type="Sprite3D" parent="Painting" unique_id=1556938222]
+texture = ExtResource("29_b8c7m")
 
-[node name="Dance Text" type="Sprite3D" parent="Painting" unique_id=1633116091]
+[node name="Text" type="Node3D" parent="Painting" unique_id=1402100619]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9202976)
+
+[node name="Dance Text" type="Sprite3D" parent="Painting/Text" unique_id=1633116091]
 texture = ExtResource("24_ue3px")
 
-[node name="Green Lady" type="Sprite3D" parent="Painting" unique_id=1721071124]
-texture = ExtResource("25_2vtla")
+[node name="Of Text" type="Sprite3D" parent="Painting/Text" unique_id=790178899]
+texture = ExtResource("30_b618p")
+
+[node name="The Text" type="Sprite3D" parent="Painting/Text" unique_id=131178487]
+texture = ExtResource("25_nar2i")
+
+[node name="Lobster Text" type="Sprite3D" parent="Painting/Text" unique_id=941134207]
+texture = ExtResource("27_8rxjc")
+
+[node name="Curtain" type="Sprite3D" parent="Painting" unique_id=1967301788]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9664593)
+visible = false
+texture = ExtResource("28_ph6e4")
+
+[node name="Thumb" type="Sprite3D" parent="Painting" unique_id=246456514]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.969665)
+texture = ExtResource("39_phaxq")
 
 [node name="Lobster" type="Sprite3D" parent="Painting" unique_id=1417419633]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -11.384543)
 texture = ExtResource("26_sciaf")
 
-[node name="Lobster Man5" type="Sprite3D" parent="Painting" unique_id=1556938222]
+[node name="Lobster Man" type="Sprite3D" parent="Painting" unique_id=1315316588]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.150726)
 texture = ExtResource("23_ftgvy")
 
-[node name="Lobster Man6" type="Sprite3D" parent="Painting" unique_id=790178899]
-texture = ExtResource("23_ftgvy")
+[node name="Smoker" type="Sprite3D" parent="Painting" unique_id=1318853115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.547058)
+texture = ExtResource("34_1tmkv")
 
-[node name="Lobster Man7" type="Sprite3D" parent="Painting" unique_id=681890715]
-texture = ExtResource("23_ftgvy")
+[node name="Stage Corner" type="Sprite3D" parent="Painting" unique_id=433218284]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.4823)
+texture = ExtResource("37_o7mke")
 
-[node name="Lobster Man8" type="Sprite3D" parent="Painting" unique_id=979876272]
-texture = ExtResource("23_ftgvy")
+[node name="Yellow Guy Arm" type="Sprite3D" parent="Painting" unique_id=1204877532]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.327202)
+texture = ExtResource("41_1tmkv")
 
-[node name="Lobster Text" type="Sprite3D" parent="Painting" unique_id=941134207]
-texture = ExtResource("27_8rxjc")
+[node name="Whisper Lady" type="Sprite3D" parent="Painting" unique_id=603332809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.174686)
+texture = ExtResource("40_ph6e4")
+
+[node name="Yellow Guy Head" type="Sprite3D" parent="Painting" unique_id=1644254289]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.360252)
+texture = ExtResource("42_awsup")
+
+[node name="Stool" type="Sprite3D" parent="Painting" unique_id=409510997]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -36.172253)
+texture = ExtResource("38_k7tks")
+
+[node name="Stage" type="Sprite3D" parent="Painting" unique_id=1252679638]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -38.778767)
+texture = ExtResource("35_awsup")
+
+[node name="Red Hair Face Left" type="Sprite3D" parent="Painting" unique_id=979876272]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.364697)
+texture = ExtResource("32_phaxq")
+
+[node name="Red Hair Body" type="Sprite3D" parent="Painting" unique_id=681890715]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.34725)
+texture = ExtResource("31_ysdi5")
+
+[node name="REDHAIR_HEAD" type="Sprite3D" parent="Painting" unique_id=994725007]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.31391)
+texture = ExtResource("33_ph6e4")
+
+[node name="Green Lady" type="Sprite3D" parent="Painting" unique_id=1721071124]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.722412)
+texture = ExtResource("25_2vtla")
+
+[node name="Stage Background" type="Sprite3D" parent="Painting" unique_id=1225025671]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.28151)
+texture = ExtResource("36_1k4fx")
