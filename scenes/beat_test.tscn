@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ddkjoux1kf716" path="res://Images/THE_TEXT.png" id="25_nar2i"]
 [ext_resource type="Texture2D" uid="uid://cri2bds8iyfi5" path="res://Images/LOBSTER.png" id="26_sciaf"]
 [ext_resource type="Texture2D" uid="uid://ci3uekdef7sx6" path="res://Images/LOBSTER_TEXT.png" id="27_8rxjc"]
+[ext_resource type="Texture2D" uid="uid://d0pac30thuy4j" path="res://Images/CURTAIN.png" id="28_1tmkv"]
 [ext_resource type="Texture2D" uid="uid://qhi7s0ht2iu8" path="res://Images/CURTAIN_DEMO.png" id="28_ph6e4"]
 [ext_resource type="Texture2D" uid="uid://bhqsavuihivm0" path="res://Images/PICTURE_FRAME.png" id="29_b8c7m"]
 [ext_resource type="Texture2D" uid="uid://cel447unh2los" path="res://Images/OF_TEXT.png" id="30_b618p"]
@@ -235,7 +236,7 @@ shadow_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7359653, 10)
 projection = 1
 fov = 50.0
-size = 8.977
+size = 8.7
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=1504573806]
 transform = Transform3D(1, 0, 0, 0, 0.95726836, -0.28920108, 0, 0.28920108, 0.95726836, 0, 0, 0)
@@ -286,7 +287,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983193, -0.55675507, 0.83061993, 0.0039769644, -0.82916147, -0.55603755, 0.0569517, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.9983192, -0.55675507, 0.83061993, 0.003976964, -0.82916147, -0.55603755, 0.056951694, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -455,7 +456,11 @@ texture = ExtResource("25_nar2i")
 [node name="Lobster Text" type="Sprite3D" parent="Painting/Text" unique_id=941134207]
 texture = ExtResource("27_8rxjc")
 
-[node name="Curtain" type="Sprite3D" parent="Painting" unique_id=1967301788]
+[node name="Curtain" type="Sprite3D" parent="Painting" unique_id=1038870574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.518, -5.037)
+texture = ExtResource("28_1tmkv")
+
+[node name="Curtain demo" type="Sprite3D" parent="Painting" unique_id=1967301788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9664593)
 visible = false
 texture = ExtResource("28_ph6e4")
