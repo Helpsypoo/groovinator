@@ -223,6 +223,33 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_tsmfw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_ph6e4")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_1k4fx"]
+script/source = "extends PickableAnimatedSprite3D
+
+func on_click() -> void:
+	var tween = create_tween()
+	tween.tween_property(self, \"position\", position + Vector3.UP, 0.1)
+	tween.tween_property(self, \"position\", position, 0.1)
+	
+
+func on_hover_enter() -> void:
+	modulate = Color(1.0, 1.0, 0.7)
+
+func on_hover_exit() -> void:
+	modulate = Color.WHITE
+"
+
 [node name="BeatTest" type="Node3D" unique_id=459559189]
 script = ExtResource("1_script")
 
@@ -498,9 +525,10 @@ texture = ExtResource("37_o7mke")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.327202)
 texture = ExtResource("41_1tmkv")
 
-[node name="Whisper Lady" type="Sprite3D" parent="Painting Container/Painting" unique_id=603332809]
+[node name="Whisper Lady" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=256974167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.174686)
-texture = ExtResource("40_ph6e4")
+sprite_frames = SubResource("SpriteFrames_tsmfw")
+script = SubResource("GDScript_1k4fx")
 
 [node name="Yellow Guy Head" type="Sprite3D" parent="Painting Container/Painting" unique_id=1644254289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.360252)
