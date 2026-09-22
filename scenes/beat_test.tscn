@@ -35,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://dwyk57t81vy33" path="res://Images/REDHAIR_BODY.png" id="31_ysdi5"]
 [ext_resource type="Texture2D" uid="uid://b2acwqmsq2bqo" path="res://Images/REDHAIR_FACE_LEFT.png" id="32_phaxq"]
 [ext_resource type="Texture2D" uid="uid://bb3coq1pftn0u" path="res://Images/REDHAIR_HEAD.png" id="33_ph6e4"]
+[ext_resource type="Script" uid="uid://cktdtkmi8perq" path="res://Paint Element Scripts/smoker.gd" id="34_1k4fx"]
 [ext_resource type="Texture2D" uid="uid://dx6amrbv6uf4h" path="res://Images/SMOKER.png" id="34_1tmkv"]
 [ext_resource type="Texture2D" uid="uid://kygdttjvak5g" path="res://Images/STAGE.png" id="35_awsup"]
 [ext_resource type="Texture2D" uid="uid://cquumbdc8rphk" path="res://Images/STAGE_BACKGROUND.png" id="36_1k4fx"]
@@ -44,6 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://b3d0qjj27f418" path="res://Images/WHISPERLADY.png" id="40_ph6e4"]
 [ext_resource type="Texture2D" uid="uid://u8fypoi3a0ly" path="res://Images/YELLOWGUY_ARM.png" id="41_1tmkv"]
 [ext_resource type="Texture2D" uid="uid://csni3sn6ucr1y" path="res://Images/YELLOWGUY_HEAD.png" id="42_awsup"]
+[ext_resource type="Script" uid="uid://b5vhf6w8cddar" path="res://core/sprite_picker.gd" id="45_awsup"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -210,6 +212,17 @@ ring_segments = 16
 shading_mode = 0
 albedo_color = Color(0.41, 0.41, 0.41, 1)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_2h45r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("34_1tmkv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="BeatTest" type="Node3D" unique_id=459559189]
 script = ExtResource("1_script")
 
@@ -274,7 +287,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983192, -0.55675507, 0.83061993, 0.003976964, -0.82916147, -0.55603755, 0.056951694, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.9983191, -0.55675507, 0.83061993, 0.0039769635, -0.82916147, -0.55603755, 0.056951687, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -472,9 +485,10 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.150726)
 texture = ExtResource("23_ftgvy")
 
-[node name="Smoker" type="Sprite3D" parent="Painting Container/Painting" unique_id=1318853115]
+[node name="Smoker" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=1105422832]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.547058)
-texture = ExtResource("34_1tmkv")
+sprite_frames = SubResource("SpriteFrames_2h45r")
+script = ExtResource("34_1k4fx")
 
 [node name="Stage Corner" type="Sprite3D" parent="Painting Container/Painting" unique_id=433218284]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.4823)
@@ -520,3 +534,6 @@ texture = ExtResource("25_2vtla")
 [node name="Stage Background" type="Sprite3D" parent="Painting Container/Painting" unique_id=1225025671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.28151)
 texture = ExtResource("36_1k4fx")
+
+[node name="PickerHelper" type="Node" parent="." unique_id=1752287866]
+script = ExtResource("45_awsup")
