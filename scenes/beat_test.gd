@@ -1,3 +1,4 @@
+class_name MainScene
 extends Node3D
 ## Test stage proving the core timing loop: play a song, press "hit" on the beat.
 
@@ -31,10 +32,18 @@ var _songs: Array[SongData] = []
 var _errors: Array[float] = []
 var _text_before_pause: String = ""
 
+enum GAME_STATE {
+	POINT_AND_CLICK,
+	RHYTHM
+}
+
+var _game_state: GAME_STATE = GAME_STATE.POINT_AND_CLICK
+
 @onready var _clock: SongClock = %SongClock
 @onready var _song_select: OptionButton = %SongSelect
 @onready var _lane: Path3D = %NoteLane
 @onready var _dancer: Node3D = %Dancer
+#@onready var _dancer_sprite: Node3D = %DancerSprite
 @onready var _judgment_label: Label = %JudgmentLabel
 @onready var _stats_label: Label = %StatsLabel
 @onready var _clock_label: Label = %ClockLabel
@@ -45,6 +54,18 @@ var _text_before_pause: String = ""
 @onready var _play_pause_button: Button = %PlayPauseButton
 @onready var _restart_button: Button = %RestartButton
 
+@onready var _painting: Node3D = %Painting
+@onready var _lobster_man: Node3D = %"Lobster Man"
+@onready var _stool: Node3D = %Stool
+@onready var _thumb: Node3D = %Thumb
+@onready var _camera: Camera3D = %Camera
+
+var _camera_position_for_rhythm_state: Vector3 = Vector3(0.2, 3.736, 10)
+var _camera_size_for_rhythm_state: float =  7.3
+var _lobster_sprite_position_for_rhythm_state: Vector3 = Vector3(-0.777, 1.215, 0)
+var _lobster_sprite_rotation_for_rhythm_state: Quaternion = Quaternion.from_euler(Vector3(0, 0, 0))
+
+var _duration_of_transition_to_rhythm_state: float = 1
 
 func _ready() -> void:
 	_load_songs()
@@ -85,11 +106,45 @@ func _on_song_selected(index: int) -> void:
 	_reset_stats()
 	_update_transport()
 
+func _start_game() -> void:
+	_move_camera_to_rhythm_position()
+	_move_lobster_guy()
+
+func _move_camera_to_rhythm_position() -> void:
+	var tween = create_tween()
+	tween.set_ease(tween.EASE_IN_OUT)
+	tween.set_trans(tween.TRANS_CUBIC);
+	tween.set_parallel()
+	tween.tween_property(_camera, "position", _camera_position_for_rhythm_state, _duration_of_transition_to_rhythm_state)
+	tween.tween_property(_camera, "size", _camera_size_for_rhythm_state, _duration_of_transition_to_rhythm_state)
+	tween.tween_property(_dancer, "position", _lobster_sprite_position_for_rhythm_state, _duration_of_transition_to_rhythm_state)
+	tween.tween_property(_dancer, "quaternion", _lobster_sprite_rotation_for_rhythm_state, _duration_of_transition_to_rhythm_state)
+	
+	#tween.tween_property(_lobster_in_painting, "position", Vector3(-0.75, -9.03, -11.385), _duration_of_transition_to_rhythm_state)
+	
+
+func _move_lobster_guy() -> void:
+	var displacement = Vector3.LEFT * 20
+	
+	_tween_displace(_lobster_man, displacement, _duration_of_transition_to_rhythm_state)
+	_tween_displace(_stool, displacement, _duration_of_transition_to_rhythm_state)
+	_tween_displace(_thumb, displacement, _duration_of_transition_to_rhythm_state)
+	
+func _tween_displace(node3D: Node3D, displacement: Vector3, duration: float) -> void:
+	var tween = create_tween()
+	tween.set_ease(tween.EASE_IN_OUT)
+	tween.set_trans(tween.TRANS_CUBIC);
+	tween.tween_property(node3D, "position", node3D.position + displacement, duration)
+
+func _explode_painting() -> void:
+	for child : Node3D in _painting.get_children():
+		child.position += Vector3.RIGHT * 20;
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("hit") and not event.is_echo():
+	if event.is_action_pressed("hit") and not event.is_echo() and _game_state == GAME_STATE.RHYTHM:
 		_hit()
-
+	elif event.is_action_pressed("hit") and not event.is_echo() and _game_state == GAME_STATE.POINT_AND_CLICK:
+		_start_game()
 
 func _unhandled_input(event: InputEvent) -> void:
 	# Taps are taken here rather than in _input so that the GUI gets first refusal:

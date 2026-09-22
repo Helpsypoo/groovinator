@@ -20,7 +20,9 @@ extends Node3D
 var _height: float = 0.0
 var _velocity: float = 0.0
 
-@onready var _floor_y: float = position.y
+var _floor_height: float = 1.215 # Copied from dancer rhythm position
+
+#@onready var _floor_height: float = position.y
 
 func _ready() -> void:
 	_sprite.animation_finished.connect(start_idle)
@@ -46,7 +48,6 @@ func hit() -> void:
 func _process(delta: float) -> void:
 	pass
 	
-	# Bounce processing, out for now
 	if _height <= 0.0 and _velocity <= 0.0:
 		return
 	var gravity := 8.0 * hop_height / (hop_time * hop_time)
@@ -55,7 +56,7 @@ func _process(delta: float) -> void:
 	if _height <= 0.0:
 		_height = 0.0
 		_velocity = 0.0
-	position.y = _floor_y + _height
+	position.y = _floor_height + _height
 
 	var takeoff_speed := 4.0 * hop_height / hop_time
 	var tall := 1.0 + stretch * absf(_velocity) / takeoff_speed
