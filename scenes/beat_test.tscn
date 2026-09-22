@@ -30,22 +30,48 @@
 [ext_resource type="Texture2D" uid="uid://ci3uekdef7sx6" path="res://Images/LOBSTER_TEXT.png" id="27_8rxjc"]
 [ext_resource type="Texture2D" uid="uid://d0pac30thuy4j" path="res://Images/CURTAIN.png" id="28_1tmkv"]
 [ext_resource type="Texture2D" uid="uid://qhi7s0ht2iu8" path="res://Images/CURTAIN_DEMO.png" id="28_ph6e4"]
+[ext_resource type="Texture2D" uid="uid://ciyveupp44sw3" path="res://Images/CURTAIN2.png" id="29_6ffd2"]
 [ext_resource type="Texture2D" uid="uid://bhqsavuihivm0" path="res://Images/PICTURE_FRAME.png" id="29_b8c7m"]
 [ext_resource type="Texture2D" uid="uid://cel447unh2los" path="res://Images/OF_TEXT.png" id="30_b618p"]
 [ext_resource type="Texture2D" uid="uid://dwyk57t81vy33" path="res://Images/REDHAIR_BODY.png" id="31_ysdi5"]
 [ext_resource type="Texture2D" uid="uid://b2acwqmsq2bqo" path="res://Images/REDHAIR_FACE_LEFT.png" id="32_phaxq"]
 [ext_resource type="Texture2D" uid="uid://bb3coq1pftn0u" path="res://Images/REDHAIR_HEAD.png" id="33_ph6e4"]
 [ext_resource type="Script" uid="uid://cktdtkmi8perq" path="res://Paint Element Scripts/smoker.gd" id="34_1k4fx"]
-[ext_resource type="Texture2D" uid="uid://dx6amrbv6uf4h" path="res://Images/SMOKER.png" id="34_1tmkv"]
+[ext_resource type="Texture2D" uid="uid://cdo2malv7vg6e" path="res://Images/SMOKER1.png" id="34_b21bl"]
 [ext_resource type="Texture2D" uid="uid://kygdttjvak5g" path="res://Images/STAGE.png" id="35_awsup"]
+[ext_resource type="Texture2D" uid="uid://dbjkut3nq6ia" path="res://Images/SMOKER2.png" id="35_b21bl"]
 [ext_resource type="Texture2D" uid="uid://cquumbdc8rphk" path="res://Images/STAGE_BACKGROUND.png" id="36_1k4fx"]
+[ext_resource type="Texture2D" uid="uid://bqwxgxscxix4t" path="res://Images/SMOKER3.png" id="36_cc0rq"]
+[ext_resource type="Script" uid="uid://dy3edtcfd88ki" path="res://Paint Element Scripts/yellowguy_arm.gd" id="36_fvnda"]
+[ext_resource type="Texture2D" uid="uid://dsq2rkq0kt2xo" path="res://Images/SMOKER4.png" id="37_4iii5"]
+[ext_resource type="Texture2D" uid="uid://d1putaxrgd2vw" path="res://Images/WHISPERLADY_CLOSED.png" id="37_ae0ae"]
+[ext_resource type="Texture2D" uid="uid://c04st8u5y4ewn" path="res://Images/YELLOWGUY_ARM_DOWN1.png" id="37_fvlwj"]
 [ext_resource type="Texture2D" uid="uid://twwu0tmyntl5" path="res://Images/STAGE_CORNER.png" id="37_o7mke"]
+[ext_resource type="Texture2D" uid="uid://5c6qqsh2ooad" path="res://Images/YELLOWGUY_ARM_DOWN2.png" id="38_6ffd2"]
 [ext_resource type="Texture2D" uid="uid://dedjx6n8h4lnj" path="res://Images/STOOL.png" id="38_k7tks"]
+[ext_resource type="Texture2D" uid="uid://ddngrchysf14" path="res://Images/SMOKER5.png" id="38_lpw2r"]
+[ext_resource type="Script" uid="uid://e14gxqo6fbpd" path="res://Paint Element Scripts/whisper_lady.gd" id="39_fvnda"]
+[ext_resource type="Texture2D" uid="uid://drxjj05l6cdc1" path="res://Images/SMOKER6.png" id="39_k6ma1"]
 [ext_resource type="Texture2D" uid="uid://c2os6svwdl6xa" path="res://Images/THUMB.png" id="39_phaxq"]
+[ext_resource type="Texture2D" uid="uid://b3rk7l05e5p8h" path="res://Images/YELLOWGUY_ARM_UP1.png" id="39_ymgo1"]
+[ext_resource type="Texture2D" uid="uid://b1t1g7umv7hl5" path="res://Images/YELLOWGUY_ARM_UP2.png" id="40_17vxj"]
+[ext_resource type="Texture2D" uid="uid://dxtfki64fobwt" path="res://Images/SMOKER7.png" id="40_o4y7n"]
 [ext_resource type="Texture2D" uid="uid://b3d0qjj27f418" path="res://Images/WHISPERLADY.png" id="40_ph6e4"]
 [ext_resource type="Texture2D" uid="uid://u8fypoi3a0ly" path="res://Images/YELLOWGUY_ARM.png" id="41_1tmkv"]
+[ext_resource type="Texture2D" uid="uid://3vcwwfpi7qht" path="res://Images/SMOKER8.png" id="41_pk3i1"]
+[ext_resource type="Texture2D" uid="uid://b4b3ona0q7gdf" path="res://Images/SMOKER9.png" id="42_6p7o0"]
 [ext_resource type="Texture2D" uid="uid://csni3sn6ucr1y" path="res://Images/YELLOWGUY_HEAD.png" id="42_awsup"]
+[ext_resource type="Texture2D" uid="uid://b3vnckwvbvggy" path="res://Images/SMOKER10.png" id="43_cebow"]
+[ext_resource type="Texture2D" uid="uid://msrt0ehssi56" path="res://Images/SMOKER11.png" id="44_igby2"]
+[ext_resource type="Texture2D" uid="uid://cclav7w2cmfrl" path="res://Images/REDHAIR_FACE_TALK.png" id="44_k7tks"]
+[ext_resource type="Script" uid="uid://e7sdhyysnp5w" path="res://Paint Element Scripts/redhair_guy.gd" id="44_o7mke"]
 [ext_resource type="Script" uid="uid://b5vhf6w8cddar" path="res://core/sprite_picker.gd" id="45_awsup"]
+[ext_resource type="Texture2D" uid="uid://b8ri0txg4e2st" path="res://Images/SMOKER12.png" id="45_rkb73"]
+[ext_resource type="Texture2D" uid="uid://qivvchbokoh6" path="res://Images/SMOKER13.png" id="46_nt4fr"]
+[ext_resource type="Texture2D" uid="uid://bobv1lq6acbsw" path="res://Images/SMOKER14.png" id="47_7k2hs"]
+[ext_resource type="Texture2D" uid="uid://ccg0a5knx8rj1" path="res://Images/SMOKER15.png" id="48_ingq6"]
+[ext_resource type="Texture2D" uid="uid://bgmx3guii6lvn" path="res://Images/SMOKER16.png" id="49_dpls5"]
+[ext_resource type="Texture2D" uid="uid://dfrfob8ymipyw" path="res://Images/SMOKER17.png" id="50_tyokv"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -216,39 +242,186 @@ albedo_color = Color(0.41, 0.41, 0.41, 1)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("34_1tmkv")
+"texture": ExtResource("34_b21bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_b21bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_cc0rq")
+}, {
+"duration": 18.0,
+"texture": ExtResource("37_4iii5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_lpw2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_k6ma1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_o4y7n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_pk3i1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_6p7o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_cebow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_igby2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_rkb73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_nt4fr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_7k2hs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ingq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_dpls5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_tyokv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_b21bl")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"default",
-"speed": 5.0
+"speed": 14.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2sp3l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("41_1tmkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fvlwj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("38_6ffd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fvlwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1tmkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ymgo1")
+}, {
+"duration": 2.0,
+"texture": ExtResource("40_17vxj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ymgo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1tmkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fvlwj")
+}, {
+"duration": 2.0,
+"texture": ExtResource("38_6ffd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_fvlwj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1tmkv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_ymgo1")
+}, {
+"duration": 1.7,
+"texture": ExtResource("40_17vxj")
+}, {
+"duration": 1.2,
+"texture": ExtResource("39_ymgo1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_1tmkv")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 20.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tsmfw"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.1,
+"texture": ExtResource("37_ae0ae")
+}, {
+"duration": 0.5,
 "texture": ExtResource("40_ph6e4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("37_ae0ae")
+}, {
+"duration": 0.5,
+"texture": ExtResource("40_ph6e4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("37_ae0ae")
+}, {
+"duration": 0.5,
+"texture": ExtResource("40_ph6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_ae0ae")
 }],
-"loop": 1,
+"loop": 0,
 "name": &"default",
 "speed": 5.0
 }]
 
-[sub_resource type="GDScript" id="GDScript_1k4fx"]
-script/source = "extends PickableAnimatedSprite3D
-
-func on_click() -> void:
-	var tween = create_tween()
-	tween.tween_property(self, \"position\", position + Vector3.UP, 0.1)
-	tween.tween_property(self, \"position\", position, 0.1)
-	
-
-func on_hover_enter() -> void:
-	modulate = Color(1.0, 1.0, 0.7)
-
-func on_hover_exit() -> void:
-	modulate = Color.WHITE
-"
+[sub_resource type="SpriteFrames" id="SpriteFrames_eg344"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_ph6e4")
+}, {
+"duration": 2.0,
+"texture": ExtResource("32_phaxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ph6e4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("44_k7tks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ph6e4")
+}, {
+"duration": 0.5,
+"texture": ExtResource("44_k7tks")
+}, {
+"duration": 0.5,
+"texture": ExtResource("33_ph6e4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_k7tks")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ph6e4")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="BeatTest" type="Node3D" unique_id=459559189]
 script = ExtResource("1_script")
@@ -314,7 +487,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983191, -0.55675507, 0.83061993, 0.0039769635, -0.82916147, -0.55603755, 0.056951687, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.998319, -0.55675507, 0.83061993, 0.003976963, -0.82916147, -0.55603755, 0.05695168, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -489,7 +662,12 @@ texture = ExtResource("27_8rxjc")
 
 [node name="Curtain" type="Sprite3D" parent="Painting Container/Painting" unique_id=1038870574]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.518, -5.037)
+visible = false
 texture = ExtResource("28_1tmkv")
+
+[node name="Curtain2" type="Sprite3D" parent="Painting Container/Painting" unique_id=140677093]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.4823)
+texture = ExtResource("29_6ffd2")
 
 [node name="Curtain demo" type="Sprite3D" parent="Painting Container/Painting" unique_id=1967301788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.9664593)
@@ -521,14 +699,100 @@ script = ExtResource("34_1k4fx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.4823)
 texture = ExtResource("37_o7mke")
 
-[node name="Yellow Guy Arm" type="Sprite3D" parent="Painting Container/Painting" unique_id=1204877532]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.327202)
-texture = ExtResource("41_1tmkv")
+[node name="Smoker1" type="Sprite3D" parent="Painting Container/Painting" unique_id=617680156]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("34_b21bl")
 
-[node name="Whisper Lady" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=256974167]
+[node name="Smoker2" type="Sprite3D" parent="Painting Container/Painting" unique_id=36608682]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("35_b21bl")
+
+[node name="Smoker3" type="Sprite3D" parent="Painting Container/Painting" unique_id=1213821574]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("36_cc0rq")
+
+[node name="Smoker4" type="Sprite3D" parent="Painting Container/Painting" unique_id=162978809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("37_4iii5")
+
+[node name="Smoker5" type="Sprite3D" parent="Painting Container/Painting" unique_id=1484406414]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("38_lpw2r")
+
+[node name="Smoker6" type="Sprite3D" parent="Painting Container/Painting" unique_id=535882043]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("39_k6ma1")
+
+[node name="Smoker7" type="Sprite3D" parent="Painting Container/Painting" unique_id=1890928868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("40_o4y7n")
+
+[node name="Smoker8" type="Sprite3D" parent="Painting Container/Painting" unique_id=1404021923]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("41_pk3i1")
+
+[node name="Smoker9" type="Sprite3D" parent="Painting Container/Painting" unique_id=291334677]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("42_6p7o0")
+
+[node name="Smoker10" type="Sprite3D" parent="Painting Container/Painting" unique_id=334023022]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("43_cebow")
+
+[node name="Smoker11" type="Sprite3D" parent="Painting Container/Painting" unique_id=592143091]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("44_igby2")
+
+[node name="Smoker12" type="Sprite3D" parent="Painting Container/Painting" unique_id=1657662251]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("45_rkb73")
+
+[node name="Smoker13" type="Sprite3D" parent="Painting Container/Painting" unique_id=1112672860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("46_nt4fr")
+
+[node name="Smoker14" type="Sprite3D" parent="Painting Container/Painting" unique_id=712052832]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("47_7k2hs")
+
+[node name="Smoker15" type="Sprite3D" parent="Painting Container/Painting" unique_id=1170928073]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("48_ingq6")
+
+[node name="Smoker16" type="Sprite3D" parent="Painting Container/Painting" unique_id=1417840968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("49_dpls5")
+
+[node name="Smoker17" type="Sprite3D" parent="Painting Container/Painting" unique_id=644878730]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -19.958178)
+visible = false
+texture = ExtResource("50_tyokv")
+
+[node name="Yellow Guy Arm" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=1488150208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -26.327202)
+sprite_frames = SubResource("SpriteFrames_2sp3l")
+script = ExtResource("36_fvnda")
+
+[node name="Whisper Lady" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=417508653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -30.174686)
 sprite_frames = SubResource("SpriteFrames_tsmfw")
-script = SubResource("GDScript_1k4fx")
+script = ExtResource("39_fvnda")
 
 [node name="Yellow Guy Head" type="Sprite3D" parent="Painting Container/Painting" unique_id=1644254289]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.360252)
@@ -545,15 +809,19 @@ texture = ExtResource("35_awsup")
 
 [node name="Red Hair Face Left" type="Sprite3D" parent="Painting Container/Painting" unique_id=979876272]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -43.364697)
+visible = false
 texture = ExtResource("32_phaxq")
 
 [node name="Red Hair Body" type="Sprite3D" parent="Painting Container/Painting" unique_id=681890715]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -41.34725)
 texture = ExtResource("31_ysdi5")
 
-[node name="REDHAIR_HEAD" type="Sprite3D" parent="Painting Container/Painting" unique_id=994725007]
+[node name="REDHAIR_HEAD" type="AnimatedSprite3D" parent="Painting Container/Painting" unique_id=75691094]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.31391)
-texture = ExtResource("33_ph6e4")
+sprite_frames = SubResource("SpriteFrames_eg344")
+frame = 8
+frame_progress = 1.0
+script = ExtResource("44_o7mke")
 
 [node name="Green Lady" type="Sprite3D" parent="Painting Container/Painting" unique_id=1721071124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -46.722412)
@@ -562,6 +830,11 @@ texture = ExtResource("25_2vtla")
 [node name="Stage Background" type="Sprite3D" parent="Painting Container/Painting" unique_id=1225025671]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -49.28151)
 texture = ExtResource("36_1k4fx")
+
+[node name="REDHAIR_HEAD_TALK" type="Sprite3D" parent="Painting Container/Painting" unique_id=708344882]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -45.051056)
+visible = false
+texture = ExtResource("44_k7tks")
 
 [node name="PickerHelper" type="Node" parent="." unique_id=1752287866]
 script = ExtResource("45_awsup")
