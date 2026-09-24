@@ -93,10 +93,12 @@
 [ext_resource type="Texture2D" uid="uid://cclav7w2cmfrl" path="res://Images/REDHAIR_FACE_TALK.png" id="44_k7tks"]
 [ext_resource type="Script" uid="uid://e7sdhyysnp5w" path="res://Paint Element Scripts/redhair_guy.gd" id="44_o7mke"]
 [ext_resource type="Script" uid="uid://b5vhf6w8cddar" path="res://core/sprite_picker.gd" id="45_awsup"]
+[ext_resource type="Texture2D" uid="uid://bugy3b05s36yx" path="res://Images/Dancer/morph/MORPH10.png" id="45_cy4bi"]
 [ext_resource type="Texture2D" uid="uid://bniffy2ebjtcj" path="res://Images/Dancer/morph/MORPH3.png" id="45_klm2i"]
 [ext_resource type="Texture2D" uid="uid://b8ri0txg4e2st" path="res://Images/SMOKER12.png" id="45_rkb73"]
 [ext_resource type="Texture2D" uid="uid://c1mqys7l7sqqb" path="res://Images/Dancer/morph/MORPH4.png" id="46_amx8l"]
 [ext_resource type="Texture2D" uid="uid://qivvchbokoh6" path="res://Images/SMOKER13.png" id="46_nt4fr"]
+[ext_resource type="Texture2D" uid="uid://c4j5n41v38ln1" path="res://Images/Dancer/morph/MORPH11.png" id="46_qy15s"]
 [ext_resource type="Texture2D" uid="uid://bobv1lq6acbsw" path="res://Images/SMOKER14.png" id="47_7k2hs"]
 [ext_resource type="Texture2D" uid="uid://ckq6monrsrjpd" path="res://Images/Dancer/morph/MORPH5.png" id="47_sl2vq"]
 [ext_resource type="Texture2D" uid="uid://ch0mjverjbk8r" path="res://Images/Dancer/morph/MORPH6.png" id="48_cy4bi"]
@@ -440,6 +442,28 @@ animations = [{
 }],
 "loop": 2,
 "name": &"MORPH1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_sl2vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_cy4bi")
+}],
+"loop": 0,
+"name": &"MORPH10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_sl2vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_qy15s")
+}],
+"loop": 0,
+"name": &"MORPH11",
 "speed": 5.0
 }, {
 "frames": [{
@@ -846,7 +870,7 @@ script = ExtResource("5_dancer")
 unique_name_in_owner = true
 transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0.7510631, 1.844387, 0)
 sprite_frames = SubResource("SpriteFrames_esf6n")
-animation = &"DANCE11"
+animation = &"MORPH11"
 speed_scale = 2.0
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]

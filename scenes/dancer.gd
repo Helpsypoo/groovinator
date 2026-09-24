@@ -140,8 +140,19 @@ extends Node3D
 	&"MORPH5",
 	&"MORPH6",
 	&"MORPH7",
+	&"MORPH1",
+	&"MORPH2",
+	&"MORPH3",
+	&"MORPH4",
+	&"MORPH5",
+	&"MORPH6",
+	&"MORPH7",
 	&"MORPH8",
 	&"MORPH9",
+	&"MORPH10",
+	&"MORPH11",
+	&"MORPH10",
+	&"MORPH11",
 ]
 
 @onready var _sprite: AnimatedSprite3D = %DancerSprite
