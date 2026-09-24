@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8wvrehejxb8g"
-path="res://.godot/imported/DANCE7.png-50c811fd373406b0917d07f3a21b252a.ctex"
+uid="uid://4d3yyo2j6xra"
+path="res://.godot/imported/DANCE29.png-077a5adb3ce4476e22afac6177fe2b29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Dancer/old/DANCE7.png"
-dest_files=["res://.godot/imported/DANCE7.png-50c811fd373406b0917d07f3a21b252a.ctex"]
+source_file="res://Images/Dancer/DANCE29.png"
+dest_files=["res://.godot/imported/DANCE29.png-077a5adb3ce4476e22afac6177fe2b29.ctex"]
 
 [params]
 

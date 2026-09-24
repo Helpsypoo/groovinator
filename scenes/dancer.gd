@@ -87,6 +87,61 @@ extends Node3D
 	&"DANCE5",
 	&"DANCE6",
 	&"DANCE7",
+	&"DANCE8",
+	&"DANCE9",
+	&"DANCE10",
+	&"DANCE11",
+	&"DANCE12",
+	&"DANCE13",
+	&"DANCE14",
+	&"DANCE15",
+	&"DANCE16",
+	&"DANCE17",
+	&"DANCE18",
+	&"DANCE1",
+	&"DANCE2",
+	&"DANCE3",
+	&"DANCE4",
+	&"DANCE5",
+	&"DANCE6",
+	&"DANCE7",
+	&"DANCE8",
+	&"DANCE9",
+	&"DANCE10",
+	&"DANCE11",
+	&"DANCE12",
+	&"DANCE13",
+	&"DANCE14",
+	&"DANCE15",
+	&"DANCE16",
+	&"DANCE17",
+	&"DANCE18",
+	&"DANCE17",
+	&"DANCE16",
+	&"DANCE15",
+	&"DANCE14",
+	&"DANCE13",
+	&"DANCE12",
+	&"DANCE11",
+	&"DANCE10",
+	&"DANCE9",
+	&"DANCE8",
+	&"DANCE7",
+	&"DANCE6",
+	&"DANCE5",
+	&"DANCE4",
+	&"DANCE3",
+	&"DANCE2",
+	&"DANCE1",
+	&"MORPH1",
+	&"MORPH2",
+	&"MORPH3",
+	&"MORPH4",
+	&"MORPH5",
+	&"MORPH6",
+	&"MORPH7",
+	&"MORPH8",
+	&"MORPH9",
 ]
 
 @onready var _sprite: AnimatedSprite3D = %DancerSprite
@@ -132,23 +187,6 @@ func hit() -> void:
 	_sprite.play(dance_animations[_current_dance_index])
 
 	_velocity = 4.0 * hop_height / hop_time
-
-
-
-#Use this for randomized dance moves
-#func hit() -> void:
-	## Pick a random dance animation, but never the same one twice in a row.
-	#var new_index := randi_range(0, dance_animations.size() - 1)
-	#while new_index == _current_dance_index and dance_animations.size() > 1:
-		#new_index = randi_range(0, dance_animations.size() - 1)
-	#_current_dance_index = new_index
-#
-	## play() on the animation that's already playing is a no-op, so stop()
-	## first to make a hit during a hit restart from frame 0.
-	#_sprite.stop()
-	#_sprite.play(dance_animations[_current_dance_index])
-#
-	#_velocity = 4.0 * hop_height / hop_time
 
 
 func _process(delta: float) -> void:

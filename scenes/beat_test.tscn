@@ -13,22 +13,41 @@
 [ext_resource type="Texture2D" uid="uid://bw2nbagwpsum7" path="res://Images/Characters/MikeFlap/mike-flap1.png" id="5_pbwxl"]
 [ext_resource type="Texture2D" uid="uid://b71s0at3a5jto" path="res://Images/Characters/MikeFlap/mike-flap2.png" id="6_5t8al"]
 [ext_resource type="PackedScene" path="res://scenes/perfect_burst.tscn" id="6_burst"]
-[ext_resource type="Texture2D" uid="uid://bgf4ughhe5eup" path="res://Images/Dancer/DANCE2.png" id="6_pk3i1"]
+[ext_resource type="Texture2D" uid="uid://cx2btjruq1a1c" path="res://Images/Dancer/DANCE13.png" id="6_ingq6"]
 [ext_resource type="Texture2D" uid="uid://dr2oabymbjglc" path="res://Images/Dancer/DANCE3.png" id="7_6p7o0"]
+[ext_resource type="Texture2D" uid="uid://dtf1ylxt38k5c" path="res://Images/Dancer/DANCE14.png" id="7_dpls5"]
 [ext_resource type="Texture2D" uid="uid://8imjuj0q4h58" path="res://Images/Characters/MikeFlap/mike-flap3.png" id="7_jn3u8"]
 [ext_resource type="Texture2D" uid="uid://08tpi6nn64ih" path="res://Images/Dancer/DANCE4.png" id="8_cebow"]
 [ext_resource type="Texture2D" uid="uid://jd4yladesa0t" path="res://Images/Characters/MikeFlap/mike-flap4.png" id="8_tyfo5"]
+[ext_resource type="Texture2D" uid="uid://cwvsma2rdfbdg" path="res://Images/Dancer/DANCE15.png" id="8_tyokv"]
+[ext_resource type="Texture2D" uid="uid://dhxgui0pe53re" path="res://Images/Dancer/DANCE16.png" id="9_fqwe5"]
 [ext_resource type="Texture2D" uid="uid://ds5tnhi0j4kqh" path="res://Images/Dancer/DANCE5.png" id="9_igby2"]
 [ext_resource type="Texture2D" uid="uid://cmym60fv86n5k" path="res://Images/Characters/MikeFlap/mike-flap5.png" id="9_jirss"]
+[ext_resource type="Texture2D" uid="uid://b7yoq2vcf0vri" path="res://Images/Dancer/DANCE17.png" id="10_7dp07"]
 [ext_resource type="Texture2D" uid="uid://ok15kxjv3em3" path="res://Images/Dancer/DANCE6.png" id="10_rkb73"]
 [ext_resource type="Texture2D" uid="uid://1g8ln8s46mlk" path="res://Images/Characters/MikeFlap/mike-flap6.png" id="10_v82gb"]
+[ext_resource type="Texture2D" uid="uid://djyxfwrrhhwnr" path="res://Images/Dancer/DANCE18.png" id="11_dqmkc"]
 [ext_resource type="Texture2D" uid="uid://dv0r21n6nchfj" path="res://Images/Characters/MikeFlap/mike-flap7.png" id="11_ftgvy"]
 [ext_resource type="Texture2D" uid="uid://d252wmnx5vsap" path="res://Images/Dancer/DANCE7.png" id="11_nt4fr"]
 [ext_resource type="Texture2D" uid="uid://d1044f1i8gcwk" path="res://Images/Dancer/DANCE8.png" id="12_6p7o0"]
+[ext_resource type="Texture2D" uid="uid://ttdky06fhd0p" path="res://Images/Dancer/DANCE9.png" id="12_cebow"]
+[ext_resource type="Texture2D" uid="uid://corn44kmktste" path="res://Images/Dancer/DANCE19.png" id="12_mboyf"]
 [ext_resource type="Texture2D" uid="uid://dr7j8amywj7yn" path="res://Images/Characters/MikeFlap/mike-flap8.png" id="12_ue3px"]
 [ext_resource type="Texture2D" uid="uid://cx7xfg4o7irvd" path="res://Images/Characters/MikeFlap/mike-flap9.png" id="13_2vtla"]
+[ext_resource type="Texture2D" uid="uid://cdqymni1k2jjq" path="res://Images/Dancer/DANCE11.png" id="13_cebow"]
+[ext_resource type="Texture2D" uid="uid://bf8v2tuj6m2wp" path="res://Images/Dancer/DANCE20.png" id="13_y1ksd"]
+[ext_resource type="Texture2D" uid="uid://cdfifvp6dpfm0" path="res://Images/Dancer/DANCE12.png" id="14_igby2"]
+[ext_resource type="Texture2D" uid="uid://dbtwj1qwaehmc" path="res://Images/Dancer/DANCE21.png" id="14_n01o3"]
 [ext_resource type="Texture2D" uid="uid://bx4nhvoxkbpab" path="res://Images/Characters/MikeFlap/mike-flap10.png" id="14_sciaf"]
 [ext_resource type="Texture2D" uid="uid://bic1tjjdv7lju" path="res://Images/Characters/MikeFlap/mike-flap11.png" id="15_8rxjc"]
+[ext_resource type="Texture2D" uid="uid://ck0ek5ngkxuwc" path="res://Images/Dancer/DANCE22.png" id="15_m03ar"]
+[ext_resource type="Texture2D" uid="uid://b7k8rs64qpksd" path="res://Images/Dancer/DANCE23.png" id="16_5p8dr"]
+[ext_resource type="Texture2D" uid="uid://cka7ckk1isnjt" path="res://Images/Dancer/DANCE24.png" id="17_akr2g"]
+[ext_resource type="Texture2D" uid="uid://b1lep7t646i21" path="res://Images/Dancer/DANCE25.png" id="18_klm2i"]
+[ext_resource type="Texture2D" uid="uid://57dqkpmw3mf" path="res://Images/Dancer/DANCE26.png" id="19_amx8l"]
+[ext_resource type="Texture2D" uid="uid://fuy8gs10wl5s" path="res://Images/Dancer/DANCE27.png" id="20_sl2vq"]
+[ext_resource type="Texture2D" uid="uid://dw6tehmdtqcog" path="res://Images/Dancer/DANCE28.png" id="21_cy4bi"]
+[ext_resource type="Texture2D" uid="uid://4d3yyo2j6xra" path="res://Images/Dancer/DANCE29.png" id="22_dqmkc"]
 [ext_resource type="Texture2D" uid="uid://4djxjew3nrmj" path="res://Images/LOBSTER_MAN.png" id="23_ftgvy"]
 [ext_resource type="Texture2D" uid="uid://b3iq40pujxh67" path="res://Images/DANCE_TEXT.png" id="24_ue3px"]
 [ext_resource type="Texture2D" uid="uid://lkou6qql43rh" path="res://Images/GREENLADY.png" id="25_2vtla"]
@@ -69,16 +88,24 @@
 [ext_resource type="Texture2D" uid="uid://b4b3ona0q7gdf" path="res://Images/SMOKER9.png" id="42_6p7o0"]
 [ext_resource type="Texture2D" uid="uid://csni3sn6ucr1y" path="res://Images/YELLOWGUY_HEAD.png" id="42_awsup"]
 [ext_resource type="Texture2D" uid="uid://b3vnckwvbvggy" path="res://Images/SMOKER10.png" id="43_cebow"]
+[ext_resource type="Texture2D" uid="uid://dsscm02t7cq8w" path="res://Images/Dancer/morph/MORPH2.png" id="44_akr2g"]
 [ext_resource type="Texture2D" uid="uid://msrt0ehssi56" path="res://Images/SMOKER11.png" id="44_igby2"]
 [ext_resource type="Texture2D" uid="uid://cclav7w2cmfrl" path="res://Images/REDHAIR_FACE_TALK.png" id="44_k7tks"]
 [ext_resource type="Script" uid="uid://e7sdhyysnp5w" path="res://Paint Element Scripts/redhair_guy.gd" id="44_o7mke"]
 [ext_resource type="Script" uid="uid://b5vhf6w8cddar" path="res://core/sprite_picker.gd" id="45_awsup"]
+[ext_resource type="Texture2D" uid="uid://bniffy2ebjtcj" path="res://Images/Dancer/morph/MORPH3.png" id="45_klm2i"]
 [ext_resource type="Texture2D" uid="uid://b8ri0txg4e2st" path="res://Images/SMOKER12.png" id="45_rkb73"]
+[ext_resource type="Texture2D" uid="uid://c1mqys7l7sqqb" path="res://Images/Dancer/morph/MORPH4.png" id="46_amx8l"]
 [ext_resource type="Texture2D" uid="uid://qivvchbokoh6" path="res://Images/SMOKER13.png" id="46_nt4fr"]
 [ext_resource type="Texture2D" uid="uid://bobv1lq6acbsw" path="res://Images/SMOKER14.png" id="47_7k2hs"]
+[ext_resource type="Texture2D" uid="uid://ckq6monrsrjpd" path="res://Images/Dancer/morph/MORPH5.png" id="47_sl2vq"]
+[ext_resource type="Texture2D" uid="uid://ch0mjverjbk8r" path="res://Images/Dancer/morph/MORPH6.png" id="48_cy4bi"]
 [ext_resource type="Texture2D" uid="uid://ccg0a5knx8rj1" path="res://Images/SMOKER15.png" id="48_ingq6"]
 [ext_resource type="Texture2D" uid="uid://bgmx3guii6lvn" path="res://Images/SMOKER16.png" id="49_dpls5"]
+[ext_resource type="Texture2D" uid="uid://8wvrehejxb8g" path="res://Images/Dancer/morph/MORPH7.png" id="49_qy15s"]
+[ext_resource type="Texture2D" uid="uid://cjcsltnfyxp0x" path="res://Images/Dancer/morph/MORPH8.png" id="50_amx8l"]
 [ext_resource type="Texture2D" uid="uid://dfrfob8ymipyw" path="res://Images/SMOKER17.png" id="50_tyokv"]
+[ext_resource type="Texture2D" uid="uid://civknqsmtoqeq" path="res://Images/Dancer/morph/MORPH9.png" id="51_sl2vq"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -135,6 +162,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("5_jn3u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5t8al")
 }],
 "loop": 0,
 "name": &"DANCE1",
@@ -142,10 +172,127 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_pk3i1")
+"texture": ExtResource("6_ingq6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("7_6p7o0")
+"texture": ExtResource("7_dpls5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_tyokv")
+}],
+"loop": 0,
+"name": &"DANCE10",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_fqwe5")
+}],
+"loop": 0,
+"name": &"DANCE11",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_7dp07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mboyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_dqmkc")
+}],
+"loop": 0,
+"name": &"DANCE12",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_mboyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_n01o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_y1ksd")
+}],
+"loop": 0,
+"name": &"DANCE13",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_n01o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m03ar")
+}],
+"loop": 2,
+"name": &"DANCE14",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_n01o3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_m03ar")
+}],
+"loop": 0,
+"name": &"DANCE15",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_5p8dr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_akr2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_klm2i")
+}],
+"loop": 0,
+"name": &"DANCE16",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_amx8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_sl2vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cy4bi")
+}],
+"loop": 0,
+"name": &"DANCE17",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_cy4bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_dqmkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_cy4bi")
+}],
+"loop": 0,
+"name": &"DANCE18",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5t8al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jn3u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5t8al")
 }],
 "loop": 0,
 "name": &"DANCE2",
@@ -157,6 +304,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_cebow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_igby2")
 }],
 "loop": 0,
 "name": &"DANCE3",
@@ -164,38 +314,8 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_cebow")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_igby2")
-}],
-"loop": 0,
-"name": &"DANCE4",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_igby2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_rkb73")
-}],
-"loop": 0,
-"name": &"DANCE5",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("10_rkb73")
 }, {
-"duration": 1.0,
-"texture": ExtResource("11_nt4fr")
-}],
-"loop": 0,
-"name": &"DANCE6",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("11_nt4fr")
 }, {
@@ -203,7 +323,71 @@ animations = [{
 "texture": ExtResource("12_6p7o0")
 }],
 "loop": 0,
+"name": &"DANCE4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cebow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6p7o0")
+}],
+"loop": 0,
+"name": &"DANCE5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_6p7o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cebow")
+}],
+"loop": 0,
+"name": &"DANCE6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_cebow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_6p7o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_cebow")
+}],
+"loop": 0,
 "name": &"DANCE7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_6p7o0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_cebow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_igby2")
+}],
+"loop": 0,
+"name": &"DANCE8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_igby2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ingq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_igby2")
+}],
+"loop": 0,
+"name": &"DANCE9",
 "speed": 5.0
 }, {
 "frames": [{
@@ -246,6 +430,105 @@ animations = [{
 "loop": 0,
 "name": &"Flap",
 "speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_5t8al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jn3u8")
+}],
+"loop": 2,
+"name": &"MORPH1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_jn3u8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_akr2g")
+}],
+"loop": 0,
+"name": &"MORPH2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_akr2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_klm2i")
+}],
+"loop": 0,
+"name": &"MORPH3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_klm2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_amx8l")
+}],
+"loop": 0,
+"name": &"MORPH4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("46_amx8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_sl2vq")
+}],
+"loop": 2,
+"name": &"MORPH5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("47_sl2vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_cy4bi")
+}],
+"loop": 0,
+"name": &"MORPH6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_cy4bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_qy15s")
+}],
+"loop": 0,
+"name": &"MORPH7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("49_qy15s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_amx8l")
+}],
+"loop": 0,
+"name": &"MORPH8",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_amx8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_sl2vq")
+}],
+"loop": 0,
+"name": &"MORPH9",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -563,7 +846,7 @@ script = ExtResource("5_dancer")
 unique_name_in_owner = true
 transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0.7510631, 1.844387, 0)
 sprite_frames = SubResource("SpriteFrames_esf6n")
-animation = &"DANCE7"
+animation = &"DANCE11"
 speed_scale = 2.0
 
 [node name="NoteLane" type="Path3D" parent="." unique_id=1155028716]
@@ -592,7 +875,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983186, -0.55675507, 0.83061993, 0.0039769616, -0.82916147, -0.55603755, 0.05695166, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.9983179, -0.55675507, 0.83061993, 0.003976959, -0.82916147, -0.55603755, 0.05695162, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 

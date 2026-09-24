@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1044f1i8gcwk"
-path.s3tc="res://.godot/imported/DANCE8.png-d0eb9a548a313a807bcf680fa603f2f2.s3tc.ctex"
+uid="uid://8wvrehejxb8g"
+path.s3tc="res://.godot/imported/MORPH7.png-2e43743ab1d6a75c863907a3ed54c0ec.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Images/Dancer/DANCE8.png"
-dest_files=["res://.godot/imported/DANCE8.png-d0eb9a548a313a807bcf680fa603f2f2.s3tc.ctex"]
+source_file="res://Images/Dancer/morph/MORPH7.png"
+dest_files=["res://.godot/imported/MORPH7.png-2e43743ab1d6a75c863907a3ed54c0ec.s3tc.ctex"]
 
 [params]
 
