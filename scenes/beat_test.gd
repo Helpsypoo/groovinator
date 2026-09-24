@@ -59,6 +59,7 @@ var _game_state: GAME_STATE = GAME_STATE.POINT_AND_CLICK
 @onready var _stool: Node3D = %Stool
 @onready var _thumb: Node3D = %Thumb
 @onready var _camera: Camera3D = %Camera
+@onready var _picker: SpritePicker = %PickerHelper
 
 var _camera_position_for_rhythm_state: Vector3 = Vector3(0.2, 3.736, 10)
 var _camera_size_for_rhythm_state: float =  7.3
@@ -107,6 +108,7 @@ func _on_song_selected(index: int) -> void:
 	_update_transport()
 
 func _start_game() -> void:
+	_picker.enabled = false
 	_move_camera_to_rhythm_position()
 	_move_lobster_guy()
 

@@ -1247,4 +1247,5 @@ visible = false
 texture = ExtResource("44_k7tks")
 
 [node name="PickerHelper" type="Node" parent="." unique_id=1752287866]
+unique_name_in_owner = true
 script = ExtResource("45_awsup")
