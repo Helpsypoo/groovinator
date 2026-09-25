@@ -111,6 +111,7 @@
 [ext_resource type="Script" uid="uid://d51k0c0lrno6" path="res://scenes/modes/curtain_mode.gd" id="52_curtain"]
 [ext_resource type="Script" uid="uid://b0m04ktorwx5n" path="res://scenes/modes/point_and_click_mode.gd" id="53_pnc"]
 [ext_resource type="Script" uid="uid://c4ag7o1w3wbjl" path="res://scenes/modes/rhythm_mode.gd" id="54_rhythm"]
+[ext_resource type="Script" uid="uid://dl73y7o1nhyi3" path="res://Paint Element Scripts/lobster.gd" id="56_37xlc"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -875,6 +876,7 @@ transform = Transform3D(0.39, 0, 0, 0, 0.39, 0, 0, 0, 0.39, 0.7510631, 1.844387,
 sprite_frames = SubResource("SpriteFrames_esf6n")
 animation = &"MORPH11"
 speed_scale = 2.0
+script = ExtResource("56_37xlc")
 
 [node name="Modes" type="Node" parent="." unique_id=1483200990]
 unique_name_in_owner = true
@@ -884,9 +886,11 @@ process_mode = 4
 script = ExtResource("52_curtain")
 curtain = NodePath("../../Painting Container/Painting/Curtain")
 
-[node name="PointAndClickMode" type="Node" parent="Modes" unique_id=1813419438]
+[node name="PointAndClickMode" type="Node" parent="Modes" unique_id=1813419438 node_paths=PackedStringArray("start_element", "title_words")]
 process_mode = 4
 script = ExtResource("53_pnc")
+start_element = NodePath("../../Dancer/DancerSprite")
+title_words = [NodePath("../../Painting Container/Painting/Text/Dance Text"), NodePath("../../Painting Container/Painting/Text/Of Text"), NodePath("../../Painting Container/Painting/Text/The Text"), NodePath("../../Painting Container/Painting/Text/Lobster Text")]
 
 [node name="RhythmMode" type="Node" parent="Modes" unique_id=1610635173]
 process_mode = 4
@@ -1072,15 +1076,19 @@ texture = ExtResource("29_b8c7m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9202976)
 
 [node name="Dance Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=1633116091]
+visible = false
 texture = ExtResource("24_ue3px")
 
 [node name="Of Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=790178899]
+visible = false
 texture = ExtResource("30_b618p")
 
 [node name="The Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=131178487]
+visible = false
 texture = ExtResource("25_nar2i")
 
 [node name="Lobster Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=941134207]
+visible = false
 texture = ExtResource("27_8rxjc")
 
 [node name="Curtain" type="Sprite3D" parent="Painting Container/Painting" unique_id=1038870574]
