@@ -16,21 +16,24 @@ extends GameMode
 ## are copies made at load and live next to it.
 @export var curtain: Node3D
 ## Sections in the stack, counting the top one.
-@export_range(1, 32) var section_count: int = 8
+@export_range(1, 32) var section_count: int = 9
 ## Vertical distance between neighbouring sections, in the curtain's parent's
 ## units. Keep it under the sprite's height (4.03 for CURTAIN.png at the default
 ## pixel size) so the sections overlap.
-@export var section_spacing: float = 2.8
+@export var section_spacing: float = 2.0
 ## How much further from the camera each section sits than the one above it.
 @export var depth_step: float = 0.05
 ## Seconds each section takes to rise behind the one above it.
-@export var step_time: float = 0.25
+@export var step_time: float = 0.3
 ## Sideways sway of a hanging section, in the curtain's parent's units.
-@export var sway_amplitude: float = 0.04
+@export var sway_amplitude: float = 0.15
 ## Sway speed in cycles per second. Each section varies from this a little.
-@export var sway_speed: float = 0.2
+@export var sway_speed: float = 0.15
 ## Mode to enter once the curtain is up.
 @export var next_mode: StringName = &"PointAndClickMode"
+
+@onready var crowd_sound = AudioStreamPlayer3D.new()
+@onready var lounge_music = AudioStreamPlayer3D.new()
 
 # Top section first.
 var _sections: Array[Node3D] = []
@@ -59,7 +62,18 @@ func _ready() -> void:
 	# The top section is part of the painting whatever the mode.
 	curtain.visible = true
 	_set_lower_sections_visible(false)
-
+	
+	add_child(crowd_sound)
+	crowd_sound.stream = preload("res://sounds/freesound_community-small-crowd-pre-concert-talking.mp3")
+	crowd_sound.stream.loop = true
+	crowd_sound.volume_db = -20.0
+	crowd_sound.play()
+	
+	add_child(lounge_music)
+	lounge_music.stream = preload("res://Tracks/atlasaudio-chill-out-606222.mp3")
+	lounge_music.stream.loop = true
+	lounge_music.volume_db = -25.0
+	lounge_music.play()
 
 func enter() -> void:
 	_raising = false

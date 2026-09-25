@@ -49,12 +49,8 @@
 [ext_resource type="Texture2D" uid="uid://dw6tehmdtqcog" path="res://Images/Dancer/DANCE28.png" id="21_cy4bi"]
 [ext_resource type="Texture2D" uid="uid://4d3yyo2j6xra" path="res://Images/Dancer/DANCE29.png" id="22_dqmkc"]
 [ext_resource type="Texture2D" uid="uid://4djxjew3nrmj" path="res://Images/LOBSTER_MAN.png" id="23_ftgvy"]
-[ext_resource type="Texture2D" uid="uid://b3iq40pujxh67" path="res://Images/DANCE_TEXT.png" id="24_ue3px"]
 [ext_resource type="Texture2D" uid="uid://lkou6qql43rh" path="res://Images/GREENLADY.png" id="25_2vtla"]
-[ext_resource type="Texture2D" uid="uid://ddkjoux1kf716" path="res://Images/THE_TEXT.png" id="25_nar2i"]
 [ext_resource type="Texture2D" uid="uid://cri2bds8iyfi5" path="res://Images/LOBSTER.png" id="26_sciaf"]
-[ext_resource type="Texture2D" uid="uid://ci3uekdef7sx6" path="res://Images/LOBSTER_TEXT.png" id="27_8rxjc"]
-[ext_resource type="Texture2D" uid="uid://d0pac30thuy4j" path="res://Images/CURTAIN.png" id="28_1tmkv"]
 [ext_resource type="Texture2D" uid="uid://qhi7s0ht2iu8" path="res://Images/CURTAIN_DEMO.png" id="28_ph6e4"]
 [ext_resource type="Texture2D" uid="uid://ciyveupp44sw3" path="res://Images/CURTAIN2.png" id="29_6ffd2"]
 [ext_resource type="Texture2D" uid="uid://bhqsavuihivm0" path="res://Images/PICTURE_FRAME.png" id="29_b8c7m"]
@@ -112,6 +108,10 @@
 [ext_resource type="Script" uid="uid://b0m04ktorwx5n" path="res://scenes/modes/point_and_click_mode.gd" id="53_pnc"]
 [ext_resource type="Script" uid="uid://c4ag7o1w3wbjl" path="res://scenes/modes/rhythm_mode.gd" id="54_rhythm"]
 [ext_resource type="Script" uid="uid://dl73y7o1nhyi3" path="res://Paint Element Scripts/lobster.gd" id="56_37xlc"]
+[ext_resource type="Texture2D" uid="uid://ckcuppee7pysm" path="res://Images/DANCE_TEXT2.png" id="64_37xlc"]
+[ext_resource type="Texture2D" uid="uid://dhlb3pq6bxsqv" path="res://Images/THE_TEXT2.png" id="66_83607"]
+[ext_resource type="Texture2D" uid="uid://buw0rofe6e0yp" path="res://Images/LOBSTER_TEXT2.png" id="67_vny5k"]
+[ext_resource type="Texture2D" uid="uid://cqbqdla7odjji" path="res://Images/CURTAIN4.png" id="68_37xlc"]
 
 [sub_resource type="Environment" id="Environment_stage"]
 background_mode = 1
@@ -922,7 +922,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_rail")
 
 [node name="HitMarker" type="PathFollow3D" parent="Modes/RhythmMode/NoteLane" unique_id=1722357741]
-transform = Transform3D(0.049519572, 0.028411686, 0.9983178, -0.55675507, 0.83061993, 0.0039769583, -0.82916147, -0.55603755, 0.056951612, -2.3896163, 0.028035132, 0.3576716)
+transform = Transform3D(0.049519572, 0.028411686, 0.99831766, -0.55675507, 0.83061993, 0.003976958, -0.82916147, -0.55603755, 0.056951605, -2.3896163, 0.028035132, 0.3576716)
 progress = 17.156475
 loop = false
 
@@ -1077,7 +1077,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.9202976)
 
 [node name="Dance Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=1633116091]
 visible = false
-texture = ExtResource("24_ue3px")
+texture = ExtResource("64_37xlc")
 
 [node name="Of Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=790178899]
 visible = false
@@ -1085,15 +1085,15 @@ texture = ExtResource("30_b618p")
 
 [node name="The Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=131178487]
 visible = false
-texture = ExtResource("25_nar2i")
+texture = ExtResource("66_83607")
 
 [node name="Lobster Text" type="Sprite3D" parent="Painting Container/Painting/Text" unique_id=941134207]
 visible = false
-texture = ExtResource("27_8rxjc")
+texture = ExtResource("67_vny5k")
 
 [node name="Curtain" type="Sprite3D" parent="Painting Container/Painting" unique_id=1038870574]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.518, -5.037)
-texture = ExtResource("28_1tmkv")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.28, 8.518, -5.037)
+texture = ExtResource("68_37xlc")
 
 [node name="Curtain2" type="Sprite3D" parent="Painting Container/Painting" unique_id=140677093]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -22.4823)

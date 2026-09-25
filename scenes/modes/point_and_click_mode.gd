@@ -19,6 +19,8 @@ extends GameMode
 @export var next_mode: StringName = &"RhythmMode"
 
 @onready var _picker: SpritePicker = %PickerHelper
+@onready var crowd_sound = AudioStreamPlayer3D.new()
+@onready var lounge_music = AudioStreamPlayer3D.new()
 
 var _revealed: int = 0
 var _start_timer: Tween
@@ -27,7 +29,16 @@ var _start_timer: Tween
 func _ready() -> void:
 	if start_element != null and start_element.has_signal(&"clicked"):
 		start_element.connect(&"clicked", _on_start_element_clicked)
-
+	add_child(crowd_sound)
+	crowd_sound.stream = preload("res://sounds/freesound_community-small-crowd-pre-concert-talking.mp3")
+	crowd_sound.stream.loop = true
+	crowd_sound.volume_db = -15.0
+	crowd_sound.play()
+	add_child(lounge_music)
+	lounge_music.stream = preload("res://Tracks/atlasaudio-chill-out-606222.mp3")
+	lounge_music.stream.loop = true
+	lounge_music.volume_db = -15.0
+	lounge_music.play()
 
 func enter() -> void:
 	_revealed = 0
